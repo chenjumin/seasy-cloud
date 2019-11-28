@@ -36,6 +36,7 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
     
 logging:
+  config: config/logback.xml
   level:
     root: INFO
     org.springframework.boot.autoconfigure: WARN

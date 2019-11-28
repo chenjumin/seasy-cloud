@@ -1,0 +1,45 @@
+<assembly>  
+	<!-- mvn clean assembly:assembly -->
+    <id>release</id> 
+     
+    <!-- format: tar.gz，zip, dir -->   
+    <formats>
+        <format>dir</format>  
+    </formats>
+  	
+    <fileSets>
+        <fileSet>  
+            <directory>/</directory>  
+            <includes>  
+                <include>run.bat</include>
+                <include>run.sh</include>
+            </includes>  
+            <outputDirectory>/</outputDirectory>  
+        </fileSet>
+        
+        <fileSet>  
+            <directory>/src/main/resources</directory>  
+            <includes>
+                <include>*.yml</include>
+                <include>*.xml</include>
+            </includes>   
+            <outputDirectory>/config</outputDirectory> 
+        </fileSet>
+        
+        <fileSet>  
+            <directory>/config</directory>    
+            <includes>  
+                <include>logback.xml</include>
+            </includes> 
+            <outputDirectory>/config</outputDirectory>  
+        </fileSet>
+        
+        <fileSet>  
+            <directory>/target</directory>    
+            <includes>  
+                <include>seasy-cloud-eureka.jar</include>
+            </includes> 
+            <outputDirectory>/</outputDirectory>  
+        </fileSet>
+    </fileSets>  
+</assembly>
