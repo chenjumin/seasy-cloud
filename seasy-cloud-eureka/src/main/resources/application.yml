@@ -14,7 +14,7 @@ eureka:
     ## 是否开启自我保护模式
     enable-self-preservation: false
     ## 心跳阈值重新计算的时间间隔
-    renewal-threshold-update-interval-ms: 120000
+    # renewal-threshold-update-interval-ms: 120000
     ## 清理失效服务的间隔时间
     eviction-interval-timer-in-ms: 5000
     ## 是否启用只读响应缓存

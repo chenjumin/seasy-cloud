@@ -1,0 +1,22 @@
+server:
+  port: 4001
+  
+spring:
+  application:
+    name: seasy-cloud-userservice
+
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://root:123456@${eureka.instance.hostname}:3001/eureka/
+ 
+logging:
+  config: config/logback.xml
+  level:
+    root: INFO
+    org.springframework.boot.autoconfigure: WARN
+   
