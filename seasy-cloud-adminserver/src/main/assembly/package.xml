@@ -11,7 +11,7 @@
   	
     <fileSets>
         <fileSet>  
-            <directory>/</directory>  
+            <directory>./</directory>  
             <includes>  
                 <include>run.bat</include>
                 <include>run.sh</include>
@@ -20,7 +20,7 @@
         </fileSet>
         
         <fileSet>  
-            <directory>/src/main/resources</directory>  
+            <directory>src/main/resources</directory>  
             <includes>
                 <include>*.yml</include>
                 <include>*.xml</include>
@@ -29,7 +29,7 @@
         </fileSet>
         
         <fileSet>  
-            <directory>/config</directory>    
+            <directory>config</directory>    
             <includes>  
                 <include>logback.xml</include>
             </includes> 
@@ -37,7 +37,7 @@
         </fileSet>
         
         <fileSet>  
-            <directory>/target</directory>    
+            <directory>target</directory>    
             <includes>  
                 <include>admin-server.jar</include>
             </includes> 
