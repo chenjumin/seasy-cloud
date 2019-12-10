@@ -10,6 +10,10 @@ eureka:
     hostname: ${spring.cloud.client.ip-address}
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     prefer-ip-address: true
+    ## 续约过期的淘汰时间
+    lease-expiration-duration-in-seconds: 15
+    ## 续约的心跳频率
+    lease-renewal-interval-in-seconds: 5
   client:
     service-url:
       defaultZone: http://root:123456@${eureka.instance.hostname}:3001/eureka/
