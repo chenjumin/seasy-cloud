@@ -13,7 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class DefaultWebSecurityConfigurer extends WebSecurityConfigurerAdapter{
 	private static Logger logger = LoggerFactory.getLogger(DefaultWebSecurityConfigurer.class);
-	private boolean csrfEnable = true;
+	private boolean csrfEnable = false;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

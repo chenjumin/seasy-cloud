@@ -1,10 +1,13 @@
 server:
-  port: 4001
+  port: 3003
   
 spring:
   application:
-    name: seasy-cloud-userservice
-
+    name: seasy-cloud-adminserver
+  profiles:
+    active:
+    - secure
+    
 eureka:
   instance:
     hostname: ${spring.cloud.client.ip-address}
@@ -14,6 +17,12 @@ eureka:
     lease-expiration-duration-in-seconds: 15
     ## 续约的心跳频率
     lease-renewal-interval-in-seconds: 5
+    #健康检查页面的URL路径
+    health-check-url-path: /actuator/health
+    #注册给eureka时告诉eureka自己的密码
+    metadata-map: 
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}
   client:
     service-url:
       defaultZone: http://admin:123456@${eureka.instance.hostname}:3001/eureka/
@@ -23,4 +32,17 @@ logging:
   level:
     root: INFO
     org.springframework.boot.autoconfigure: WARN
-   
+    
+#每个环境的配置根据 '---'分隔符隔开      
+---
+spring:
+  profiles: insecure
+
+---
+spring:
+  profiles: secure
+  #登录admin server的用户名和密码
+  security:
+    user:
+      name: cjm
+      password: 123

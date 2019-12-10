@@ -18,6 +18,7 @@
   <modules>
   	<module>seasy-cloud-eureka</module>
   	<module>seasy-cloud-userservice</module>
+  	<module>seasy-cloud-adminserver</module>
   </modules>
 
   <properties>

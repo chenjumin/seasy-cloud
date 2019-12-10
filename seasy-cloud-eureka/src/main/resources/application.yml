@@ -6,7 +6,7 @@ spring:
     name: seasy-cloud-eureka
   security:
     user:
-      name: root
+      name: admin
       password: 123456
 
 eureka:
