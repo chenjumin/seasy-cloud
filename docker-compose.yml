@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  eureka1:
+    image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
+    ports:
+      - 3001:3001
+    networks:
+      - seasy_net
+    environment:
+      - SPRING_PROFILES_ACTIVE=eureka1
+  eureka2:
+    image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
+    ports:
+      - 3002:3002
+    networks:
+      - seasy_net
+    environment:
+      - SPRING_PROFILES_ACTIVE=eureka2
+  eureka3:
+    image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
+    ports:
+      - 3003:3003
+    networks:
+      - seasy_net
+    environment:
+      - SPRING_PROFILES_ACTIVE=eureka3
+networks:
+  seasy_net:
+    driver: overlay

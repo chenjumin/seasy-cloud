@@ -1,6 +1,3 @@
-server:
-  port: 3001
-  
 spring:
   application:
     name: seasy-cloud-eureka
@@ -10,6 +7,11 @@ spring:
       password: 123456
 
 eureka:
+  instance:
+    ## 续约过期的淘汰时间
+    lease-expiration-duration-in-seconds: 15
+    ## 续约的心跳频率
+    lease-renewal-interval-in-seconds: 5
   server:
     ## 是否开启自我保护模式
     enable-self-preservation: false
@@ -23,14 +25,23 @@ eureka:
     response-cache-auto-expiration-in-seconds: 60
     ## 指定每分钟需要收到的续约次数的阈值
     renewal-percent-threshold: 0.49
+    
+logging:
+  config: config/logback.xml
+  level:
+    root: INFO
+    org.springframework.boot.autoconfigure: WARN
+
+---
+spring:
+  profiles: standalone
+server:
+  port: 3001
+eureka:
   instance:
-    hostname: ${spring.cloud.client.ip-address}
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    hostname: ${spring.cloud.client.ip-address}
     prefer-ip-address: true
-    ## 续约过期的淘汰时间
-    lease-expiration-duration-in-seconds: 15
-    ## 续约的心跳频率
-    lease-renewal-interval-in-seconds: 5
   client:
     #是否注册自身为服务
     register-with-eureka: false
@@ -38,10 +49,49 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-    
-logging:
-  config: config/logback.xml
-  level:
-    root: INFO
-    org.springframework.boot.autoconfigure: WARN
-   
+
+---
+spring:
+  profiles: eureka1
+server:
+  port: 3001
+eureka:
+  instance:
+    hostname: eureka1
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://admin:123456@eureka2:3002/eureka/,http://admin:123456@eureka3:3003/eureka/
+      
+---
+spring:
+  profiles: eureka2
+server:
+  port: 3002
+eureka:
+  instance:
+    hostname: eureka2
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://admin:123456@eureka1:3001/eureka/,http://admin:123456@eureka3:3003/eureka/
+
+---
+spring:
+  profiles: eureka3
+server:
+  port: 3003
+eureka:
+  instance:
+    hostname: eureka3
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://admin:123456@eureka1:3001/eureka/,http://admin:123456@eureka2:3002/eureka/
+  
