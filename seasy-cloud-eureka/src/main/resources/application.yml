@@ -11,7 +11,7 @@ spring:
 
 eureka:
   instance:
-    appname: ${spring.application.name}
+    hostname: ${EUREKA_HOSTNAME}
     prefer-ip-address: false
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
     
@@ -36,7 +36,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: ${EUREKA_SERVER_LIST}
+      defaultZone: http://admin:123456@eureka1:3001/eureka/,http://admin:123456@eureka2:3001/eureka/
     
 logging:
   config: config/logback.xml
