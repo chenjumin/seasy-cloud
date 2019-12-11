@@ -8,7 +8,7 @@ services:
     networks:
       - seasy_net
     environment:
-      - SPRING_PROFILES_ACTIVE=eureka1
+      - spring.profiles.active=eureka1
   eureka2:
     image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
     ports:
@@ -16,7 +16,7 @@ services:
     networks:
       - seasy_net
     environment:
-      - SPRING_PROFILES_ACTIVE=eureka2
+      - spring.profiles.active=eureka2
   eureka3:
     image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
     ports:
@@ -24,7 +24,7 @@ services:
     networks:
       - seasy_net
     environment:
-      - SPRING_PROFILES_ACTIVE=eureka3
+      - spring.profiles.active=eureka3
 networks:
   seasy_net:
     driver: overlay
