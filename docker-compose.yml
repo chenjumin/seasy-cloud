@@ -11,8 +11,7 @@ services:
       - "3001:3001"
     environment:
       - eureka.instance.hostname=eureka1
-      - eureka.instance.prefer-ip-address=true
-      - spring.cloud.inetutils.preferred-networks=192.168.3
+      - spring.cloud.inetutils.preferred-networks=10.255.0
       - EUREKA_SERVER_LIST=http://admin:123456@eureka2:3001/eureka/
   eureka2:
     image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
@@ -24,8 +23,7 @@ services:
       - "3002:3001"
     environment:
       - eureka.instance.hostname=eureka2
-      - eureka.instance.prefer-ip-address=true
-      - spring.cloud.inetutils.preferred-networks=192.168.3
+      - spring.cloud.inetutils.preferred-networks=10.255.0
       - EUREKA_SERVER_LIST=http://admin:123456@eureka1:3001/eureka/
 networks:
   seasy-overlay:
