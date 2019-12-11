@@ -1,12 +1,14 @@
 server:
-  port: 3003
+  port: 3100
   
 spring:
   application:
     name: seasy-cloud-adminserver
-  profiles:
-    active:
-    - secure
+  #登录admin server的用户名和密码
+  security:
+    user:
+      name: cjm
+      password: 123
     
 eureka:
   instance:
@@ -25,24 +27,10 @@ eureka:
       user.password: ${spring.security.user.password}
   client:
     service-url:
-      defaultZone: http://admin:123456@${eureka.instance.hostname}:3001/eureka/
+      defaultZone: http://admin:123456@${EUREKA_SERVER_ADDRESS}:3001/eureka/
  
 logging:
   config: config/logback.xml
   level:
     root: INFO
     org.springframework.boot.autoconfigure: WARN
-    
-#每个环境的配置根据 '---'分隔符隔开      
----
-spring:
-  profiles: insecure
-
----
-spring:
-  profiles: secure
-  #登录admin server的用户名和密码
-  security:
-    user:
-      name: cjm
-      password: 123
