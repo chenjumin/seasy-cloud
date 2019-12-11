@@ -58,7 +58,8 @@ server:
 eureka:
   instance:
     hostname: eureka1
-    instance-id: ${eureka.instance.hostname}:${server.port}
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     register-with-eureka: true
     fetch-registry: true
@@ -73,7 +74,8 @@ server:
 eureka:
   instance:
     hostname: eureka2
-    instance-id: ${eureka.instance.hostname}:${server.port}
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     register-with-eureka: true
     fetch-registry: true
@@ -88,7 +90,8 @@ server:
 eureka:
   instance:
     hostname: eureka3
-    instance-id: ${eureka.instance.hostname}:${server.port}
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     register-with-eureka: true
     fetch-registry: true
