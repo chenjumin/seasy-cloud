@@ -34,7 +34,7 @@ public class Main {
         }
     }
  
-    @Profile("secure")
+//    @Profile("secure")
     @Configuration
     public static class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
         private final String adminContextPath;
