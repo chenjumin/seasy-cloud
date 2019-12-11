@@ -1,30 +1,36 @@
-version: "3"
+version: "3.7"
 
 services:
   eureka1:
     image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
-    ports:
-      - 3001:3001
     networks:
-      - seasy_net
+      seasy-overlay:
+        aliases: eureka
+    ports:
+      - "3001:3001"
     environment:
-      - spring.profiles.active=eureka1
+      - eureka.instance.hostname=eureka1
+      - EUREKA_SERVER_LIST=http://admin:123456@eureka2:3001/eureka/,http://admin:123456@eureka3:3001/eureka/
   eureka2:
     image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
-    ports:
-      - 3002:3002
     networks:
-      - seasy_net
+      seasy-overlay:
+        aliases: eureka
+    ports:
+      - "3002:3001"
     environment:
-      - spring.profiles.active=eureka2
+      - eureka.instance.hostname=eureka2
+      - EUREKA_SERVER_LIST=http://admin:123456@eureka1:3001/eureka/,http://admin:123456@eureka3:3001/eureka/
   eureka3:
     image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
-    ports:
-      - 3003:3003
     networks:
-      - seasy_net
+      seasy-overlay:
+        aliases: eureka
+    ports:
+      - "3003:3001"
     environment:
-      - spring.profiles.active=eureka3
+      - eureka.instance.hostname=eureka3
+      - EUREKA_SERVER_LIST=http://admin:123456@eureka1:3001/eureka/,http://admin:123456@eureka2:3001/eureka/
 networks:
-  seasy_net:
+  seasy-overlay:
     driver: overlay

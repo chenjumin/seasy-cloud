@@ -1,3 +1,6 @@
+server:
+  port: 3001
+  
 spring:
   application:
     name: seasy-cloud-eureka
@@ -8,6 +11,9 @@ spring:
 
 eureka:
   instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    
     ## 续约过期的淘汰时间
     lease-expiration-duration-in-seconds: 15
     ## 续约的心跳频率
@@ -25,76 +31,15 @@ eureka:
     response-cache-auto-expiration-in-seconds: 60
     ## 指定每分钟需要收到的续约次数的阈值
     renewal-percent-threshold: 0.49
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_LIST}
     
 logging:
   config: config/logback.xml
   level:
     root: INFO
     org.springframework.boot.autoconfigure: WARN
-
----
-spring:
-  profiles: standalone
-server:
-  port: 3001
-eureka:
-  instance:
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    hostname: ${spring.cloud.client.ip-address}
-    prefer-ip-address: true
-  client:
-    #是否注册自身为服务
-    register-with-eureka: false
-    #是否拉取服务列表
-    fetch-registry: false
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-
----
-spring:
-  profiles: eureka1
-server:
-  port: 3001
-eureka:
-  instance:
-    hostname: eureka1
-    prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://admin:123456@eureka2:3002/eureka/,http://admin:123456@eureka3:3003/eureka/
-      
----
-spring:
-  profiles: eureka2
-server:
-  port: 3002
-eureka:
-  instance:
-    hostname: eureka2
-    prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://admin:123456@eureka1:3001/eureka/,http://admin:123456@eureka3:3003/eureka/
-
----
-spring:
-  profiles: eureka3
-server:
-  port: 3003
-eureka:
-  instance:
-    hostname: eureka3
-    prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://admin:123456@eureka1:3001/eureka/,http://admin:123456@eureka2:3002/eureka/
   
