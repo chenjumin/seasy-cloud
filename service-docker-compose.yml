@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  userservice:
+    image: 192.168.134.142/seasy/seasy-cloud-userservice:0.0.1-SNAPSHOT
+    networks:
+      - seasy-overlay
+    ports:
+      - "4001:4001"
+    environment:
+      - EUREKA_SERVER_ADDRESS=eureka
+networks:
+  seasy-overlay:
+    external:
+      name: seasy-overlay

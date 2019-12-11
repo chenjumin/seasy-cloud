@@ -16,7 +16,7 @@ eureka:
     lease-renewal-interval-in-seconds: 5
   client:
     service-url:
-      defaultZone: http://admin:123456@${eureka.instance.hostname}:3001/eureka/
+      defaultZone: http://admin:123456@${EUREKA_SERVER_ADDRESS}:3001/eureka/
  
 logging:
   config: config/logback.xml
