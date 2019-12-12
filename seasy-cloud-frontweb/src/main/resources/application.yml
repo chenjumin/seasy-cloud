@@ -1,0 +1,49 @@
+server:
+  port: 4002
+  
+spring:
+  application:
+    name: seasy-cloud-frontweb
+
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    ## 续约过期的淘汰时间
+    lease-expiration-duration-in-seconds: 15
+    ## 续约的心跳频率
+    lease-renewal-interval-in-seconds: 5
+  client:
+    service-url:
+      defaultZone: http://admin:123456@${EUREKA_SERVER_ADDRESS}:3001/eureka/
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+                
+ribbon:
+  connectTimeout: 10000
+  readTimeout: 10000
+      
+logging:
+  config: config/logback.xml
+  level:
+    root: INFO
+    org.springframework.boot.autoconfigure: WARN
+    com.seasy.cloud.frontweb.feignclient.UserFeignClient: DEBUG
+    
