@@ -39,7 +39,7 @@
         <fileSet>  
             <directory>target</directory>    
             <includes>  
-                <include>seasy-cloud-userservice.jar</include>
+                <include>seasy-cloud-frontweb.jar</include>
             </includes> 
             <outputDirectory>/</outputDirectory>  
         </fileSet>
