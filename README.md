@@ -1,7 +1,7 @@
 # seasy-cloud
 
 ## seasy-cloud-userservice  
-·şÎñÌá¹©Õß  
+æœåŠ¡æä¾›è€…  
 
 ## seasy-cloud-frontweb  
-·şÎñÏû·ÑÕß  
+æœåŠ¡æ¶ˆè´¹è€…  
