@@ -8,11 +8,11 @@ import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import feign.Feign;
 import okhttp3.ConnectionPool;
-import okhttp3.OkHttpClient;
 
 @Configuration
-@ConditionalOnClass(OkHttpClient.class)
+@ConditionalOnClass(Feign.class)
 @AutoConfigureBefore(FeignAutoConfiguration.class)
 public class FeignOKHttpConfig {
 	@Bean
