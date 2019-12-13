@@ -20,6 +20,7 @@
   	<module>seasy-cloud-userservice</module>
   	<module>seasy-cloud-adminserver</module>
   	<module>seasy-cloud-frontweb</module>
+  	<module>seasy-cloud-base</module>
   </modules>
 
   <properties>
@@ -54,13 +55,13 @@
     </dependencies>
   </dependencyManagement>
   
-  <build>
-	<plugins>
-		<plugin>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-maven-plugin</artifactId>
-		</plugin>
-	</plugins>
-  </build>
+<!--   <build> -->
+<!-- 	<plugins> -->
+<!-- 		<plugin> -->
+<!-- 			<groupId>org.springframework.boot</groupId> -->
+<!-- 			<artifactId>spring-boot-maven-plugin</artifactId> -->
+<!-- 		</plugin> -->
+<!-- 	</plugins> -->
+<!--   </build> -->
 
 </project>

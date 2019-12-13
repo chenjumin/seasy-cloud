@@ -24,3 +24,13 @@ logging:
     root: INFO
     org.springframework.boot.autoconfigure: WARN
    
+#开启所有的管理端点给Admin Server进行监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+      

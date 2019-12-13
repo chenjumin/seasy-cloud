@@ -18,6 +18,7 @@ eureka:
     service-url:
       defaultZone: http://admin:123456@${EUREKA_SERVER_ADDRESS}:3001/eureka/
 
+#Feign的配置信息
 feign:
   client:
     config:
@@ -26,6 +27,10 @@ feign:
         readTimeout: 5000
         loggerLevel: full
   hystrix:
+    enabled: true
+  httpclient:
+    enabled: false
+  okhttp:
     enabled: true
 
 hystrix:
@@ -39,11 +44,28 @@ hystrix:
 ribbon:
   connectTimeout: 10000
   readTimeout: 10000
-      
+  #负载均衡
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+
+#seasy-cloud-userservice:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+    
 logging:
   config: config/logback.xml
   level:
     root: INFO
     org.springframework.boot.autoconfigure: WARN
     com.seasy.cloud.frontweb.feignclient.UserFeignClient: DEBUG
+   
+#开启所有的管理端点给Admin Server进行监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+      
     

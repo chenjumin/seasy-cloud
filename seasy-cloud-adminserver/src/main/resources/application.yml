@@ -26,6 +26,8 @@ eureka:
       user.name: ${spring.security.user.name}
       user.password: ${spring.security.user.password}
   client:
+    #表示eureka client间隔多久去拉取服务注册信息，默认为30秒
+    registry-fetch-interval-seconds: 5  
     service-url:
       defaultZone: http://admin:123456@${EUREKA_SERVER_ADDRESS}:3001/eureka/
  
@@ -34,3 +36,13 @@ logging:
   level:
     root: INFO
     org.springframework.boot.autoconfigure: WARN
+   
+#开启所有的管理端点给Admin Server进行监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
