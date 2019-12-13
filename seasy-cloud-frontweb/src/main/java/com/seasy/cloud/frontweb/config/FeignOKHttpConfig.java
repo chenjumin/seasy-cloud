@@ -4,7 +4,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +13,6 @@ import okhttp3.OkHttpClient;
 
 @Configuration
 @ConditionalOnClass(OkHttpClient.class)
-@ConditionalOnProperty(value="feign.okhttp.enabled", matchIfMissing=true)
 @AutoConfigureBefore(FeignAutoConfiguration.class)
 public class FeignOKHttpConfig {
 	@Bean

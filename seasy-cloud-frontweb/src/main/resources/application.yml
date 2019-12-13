@@ -54,7 +54,7 @@ ribbon:
 logging:
   config: config/logback.xml
   level:
-    root: INFO
+    root: DEBUG
     org.springframework.boot.autoconfigure: WARN
     com.seasy.cloud.frontweb.feignclient.UserFeignClient: DEBUG
    
