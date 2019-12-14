@@ -17,6 +17,12 @@ services:
       - "4001:4001"
     environment:
       - EUREKA_SERVER_ADDRESS=eureka
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
   frontweb:
     image: 192.168.134.142/seasy/seasy-cloud-frontweb:0.0.1-SNAPSHOT
     networks:
@@ -25,6 +31,12 @@ services:
       - "4002:4002"
     environment:
       - EUREKA_SERVER_ADDRESS=eureka
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
 networks:
   seasy-overlay:
     external: true

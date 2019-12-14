@@ -30,8 +30,8 @@ feign:
     enabled: true
   httpclient:
     enabled: true
-#  okhttp:
-#    enabled: true
+  okhttp:
+    enabled: false
 
 hystrix:
   command:
