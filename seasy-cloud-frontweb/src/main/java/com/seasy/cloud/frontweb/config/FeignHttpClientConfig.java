@@ -12,11 +12,11 @@ import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@AutoConfigureAfter(FeignAutoConfiguration.class)
-@ConditionalOnProperty(value = "feign.httpclient.enabled", matchIfMissing = true)
+//@Configuration
+//@AutoConfigureAfter(FeignAutoConfiguration.class)
+//@ConditionalOnProperty(value = "feign.httpclient.enabled", matchIfMissing = true)
 public class FeignHttpClientConfig {	
-	@Bean(destroyMethod="close")
+//	@Bean(destroyMethod="close")
 	public PoolingHttpClientConnectionManager poolingHttpClientConnectionManager(){
 		PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
 		connectionManager.setMaxTotal(100);
@@ -24,7 +24,7 @@ public class FeignHttpClientConfig {
 		return connectionManager;
 	}
 	
-	@Bean
+//	@Bean
 	public HttpClientBuilder httpClientBuilder(HttpClientConnectionManager connectionManager){
 		RequestConfig requestConfig = RequestConfig.custom()
 				.setConnectTimeout(5000)
@@ -39,7 +39,7 @@ public class FeignHttpClientConfig {
 		return builder;
 	}
 	
-	@Bean
+//	@Bean
 	public HttpClient httpClient(HttpClientBuilder httpClientBuilder){
 		return httpClientBuilder.build();
 	}
