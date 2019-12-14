@@ -29,9 +29,9 @@ feign:
   hystrix:
     enabled: true
   httpclient:
-    enabled: false
-  okhttp:
     enabled: true
+#  okhttp:
+#    enabled: true
 
 hystrix:
   command:
