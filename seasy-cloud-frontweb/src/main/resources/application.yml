@@ -26,12 +26,13 @@ feign:
         connectTimeout: 5000
         readTimeout: 5000
         loggerLevel: full
+  #服务熔断降级
   hystrix:
     enabled: true
   httpclient:
-    enabled: true
-  okhttp:
     enabled: false
+  okhttp:
+    enabled: true
 
 hystrix:
   command:
@@ -41,11 +42,12 @@ hystrix:
           thread:
             timeoutInMilliseconds: 5000
                 
-ribbon:
-  connectTimeout: 10000
-  readTimeout: 10000
+#ribbon:
+  #connectTimeout: 10000
+  #readTimeout: 10000
+  #MaxAutoRetries: 0
   #负载均衡
-  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+  #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
 
 #seasy-cloud-userservice:
 #  ribbon:
@@ -54,9 +56,9 @@ ribbon:
 logging:
   config: config/logback.xml
   level:
-    root: DEBUG
+    root: INFO
     org.springframework.boot.autoconfigure: WARN
-    com.seasy.cloud.frontweb.feignclient.UserFeignClient: DEBUG
+    com.seasy.cloud.frontweb.feignclient.UserFeignClient: INFO
    
 #开启所有的管理端点给Admin Server进行监控
 management:

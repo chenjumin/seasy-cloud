@@ -22,21 +22,27 @@ public class UserFeignClientFallbackFactory implements FallbackFactory<UserFeign
 			
 			@Override
 			public String query(String name) {
+				showErrorReason();
 				return null;
 			}
 			
 			@Override
 			public User add(User user) {
+				showErrorReason();
 				return null;
 			}
 			
 			@Override
 			public List<Address> getAllAddress() {
+				showErrorReason();
 				return null;
 			}
 			
 			private void showErrorReason(){
-				System.out.println(ex.toString());
+				System.out.println("进入熔断处理类...");
+				if(ex != null){
+					System.out.println(ex.toString());
+				}
 			}
 		};
 	}
