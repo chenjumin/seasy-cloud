@@ -4,7 +4,11 @@ server:
 spring:
   application:
     name: seasy-cloud-userservice
-
+  cloud:
+    inetutils:
+      preferred-networks:
+      - 10.255.0
+      
 eureka:
   instance:
     hostname: ${spring.cloud.client.ip-address}

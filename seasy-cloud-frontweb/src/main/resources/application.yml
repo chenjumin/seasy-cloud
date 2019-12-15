@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: seasy-cloud-frontweb
+  cloud:
+    inetutils:
+      preferred-networks:
+      - 10.255.0
 
 eureka:
   instance:
