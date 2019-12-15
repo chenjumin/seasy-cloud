@@ -7,13 +7,14 @@ spring:
   cloud:
     inetutils:
       preferred-networks:
-      - 10.255.0
+      - 10.0.0
       
 eureka:
   instance:
     hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: false
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    prefer-ip-address: true
+    
     ## 续约过期的淘汰时间
     lease-expiration-duration-in-seconds: 15
     ## 续约的心跳频率
