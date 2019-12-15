@@ -42,10 +42,12 @@ hystrix:
           thread:
             timeoutInMilliseconds: 5000
                 
-#ribbon:
+ribbon:
+  eureka:
+    enabled: true
   #connectTimeout: 10000
   #readTimeout: 10000
-  #MaxAutoRetries: 0
+  #maxAutoRetries: 0
   #负载均衡
   #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
 
