@@ -4,24 +4,16 @@ server:
 spring:
   application:
     name: seasy-cloud-frontweb
-  cloud:
-    inetutils:
-      preferred-networks:
-      - 10.0.0
+  profiles:
+    active:
+    - pro
 
 eureka:
   instance:
-    hostname: ${spring.cloud.client.ip-address}
-    prefer-ip-address: false
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    
     ## 续约过期的淘汰时间
     lease-expiration-duration-in-seconds: 15
     ## 续约的心跳频率
     lease-renewal-interval-in-seconds: 5
-  client:
-    service-url:
-      defaultZone: http://admin:123456@${EUREKA_SERVER_ADDRESS}:3001/eureka/
 
 #Feign的配置信息
 feign:
@@ -34,8 +26,8 @@ feign:
   #服务熔断降级
   hystrix:
     enabled: true
-  httpclient:
-    enabled: true
+  #httpclient:
+  #  enabled: false
   #okhttp:
   #  enabled: true
 
@@ -55,17 +47,13 @@ ribbon:
   #maxAutoRetries: 0
   #负载均衡
   #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
-
-#seasy-cloud-userservice:
-#  ribbon:
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
     
 logging:
   config: config/logback.xml
   level:
-    root: INFO
+    root: debug
     org.springframework.boot.autoconfigure: WARN
-    com.seasy.cloud.frontweb.feignclient.UserFeignClient: INFO
+    com.seasy.cloud.frontweb.feignclient.UserFeignClient: debug
    
 #开启所有的管理端点给Admin Server进行监控
 management:
@@ -76,5 +64,33 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
-      
+
+---
+spring:
+  profiles: dev
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: false
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://admin:123456@${spring.cloud.client.ip-address}:3001/eureka/
+  
+---
+spring:
+  profiles: pro
+  cloud:
+    inetutils:
+      preferred-networks:
+      - 10.0.0
+eureka:
+  instance:
+    hostname: ${spring.application.name}
+    prefer-ip-address: false
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://admin:123456@${EUREKA_SERVER_ADDRESS}:3001/eureka/
+            
     
