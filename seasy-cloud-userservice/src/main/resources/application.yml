@@ -52,7 +52,7 @@ spring:
       - 10.0.0
 eureka:
   instance:
-    hostname: ${spring.application.name}
+    hostname: ${spring.cloud.client.ip-address}
     prefer-ip-address: false
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
