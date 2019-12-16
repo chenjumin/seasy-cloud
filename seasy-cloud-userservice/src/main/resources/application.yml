@@ -37,7 +37,7 @@ spring:
 eureka:
   instance:
     hostname: ${spring.cloud.client.ip-address}
-    prefer-ip-address: false
+    prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
@@ -49,11 +49,11 @@ spring:
   cloud:
     inetutils:
       preferred-networks:
-      - 10.0.0
+      - 10.0.4
 eureka:
   instance:
     hostname: ${spring.cloud.client.ip-address}
-    prefer-ip-address: false
+    prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
