@@ -48,9 +48,6 @@ spring:
   profiles: pro
   cloud:
     inetutils:
-      ignored-interfaces:
-      - ${IGNORED_INTERFACES_0}
-      - ${IGNORED_INTERFACES_1}
       #注册时用的IP网段
       preferred-networks:
       - ${PREFERRED_NETWORKS}

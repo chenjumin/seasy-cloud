@@ -18,8 +18,6 @@ services:
     environment:
       - EUREKA_SERVER_ADDRESS=eureka
       - PREFERRED_NETWORKS=10.10.0
-      - IGNORED_INTERFACES_0=eth0
-      - IGNORED_INTERFACES_1=eth2
     deploy:
       mode: replicated
       replicas: 2
@@ -35,8 +33,6 @@ services:
     environment:
       - EUREKA_SERVER_ADDRESS=eureka
       - PREFERRED_NETWORKS=10.10.0
-      - IGNORED_INTERFACES_0=eth0
-      - IGNORED_INTERFACES_1=eth2
     deploy:
       mode: replicated
       replicas: 1

@@ -82,16 +82,15 @@ spring:
   profiles: pro
   cloud:
     inetutils:
-      ignored-interfaces:
-      - ${IGNORED_INTERFACES_0}
-      - ${IGNORED_INTERFACES_1}
       #注册时用的IP网段
       preferred-networks:
       - ${PREFERRED_NETWORKS}
 eureka:
   instance:
+    #服务实例通过IP地址访问
     hostname: ${spring.cloud.client.ip-address}
     prefer-ip-address: true
+    #服务实例ID
     instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
