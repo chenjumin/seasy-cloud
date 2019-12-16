@@ -72,7 +72,7 @@ eureka:
   instance:
     hostname: ${spring.cloud.client.ip-address}
     prefer-ip-address: true
-    instance-id: ${eureka.instance.hostname}:${server.port}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
       defaultZone: http://admin:123456@${spring.cloud.client.ip-address}:3001/eureka/
@@ -80,15 +80,16 @@ eureka:
 ---
 spring:
   profiles: pro
-  cloud:
-    inetutils:
-      preferred-networks:
-      - 10.10.0
+  #cloud:
+    #inetutils:
+      #注册时用的IP网段
+    #  preferred-networks:
+    #  - 10.10.0
 eureka:
   instance:
     hostname: ${spring.cloud.client.ip-address}
     prefer-ip-address: true
-    instance-id: ${spring.cloud.client.hostname}:${server.port}
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
   client:
     service-url:
       defaultZone: http://admin:123456@${EUREKA_SERVER_ADDRESS}:3001/eureka/

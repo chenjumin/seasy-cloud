@@ -17,6 +17,9 @@ services:
       - "4001:4001"
     environment:
       - EUREKA_SERVER_ADDRESS=eureka
+      - spring.cloud.inetutils.ignored-interfaces[0]=eth0
+      - spring.cloud.inetutils.ignored-interfaces[1]=eth2
+      - spring.cloud.inetutils.preferred-networks=10.10.0
     deploy:
       mode: replicated
       replicas: 2
@@ -31,6 +34,9 @@ services:
       - "4002:4002"
     environment:
       - EUREKA_SERVER_ADDRESS=eureka
+      - spring.cloud.inetutils.ignored-interfaces[0]=eth0
+      - spring.cloud.inetutils.ignored-interfaces[1]=eth2
+      - spring.cloud.inetutils.preferred-networks=10.10.0
     deploy:
       mode: replicated
       replicas: 1

@@ -56,10 +56,10 @@ eureka:
 ---
 spring:
   profiles: pro
-  cloud:
-    inetutils:
-      preferred-networks:
-      - 10.10.0
+  #cloud:
+  #  inetutils:
+  #    preferred-networks:
+  #    - 10.10.0
 
 eureka:
   instance:
