@@ -4,7 +4,7 @@ services:
   eureka1:
     image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
     networks:
-      seasy-overlay:
+      seasy_overlay:
         aliases: 
           - eureka
     ports:
@@ -17,7 +17,7 @@ services:
   eureka2:
     image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
     networks:
-      seasy-overlay:
+      seasy_overlay:
         aliases: 
           - eureka
     ports:
@@ -28,6 +28,6 @@ services:
       #- spring.cloud.inetutils.preferred-networks=10.255.0
       #- EUREKA_SERVER_LIST=http://admin:123456@eureka1:3001/eureka/
 networks:
-  seasy-overlay:
+  seasy_overlay:
     external: true
-    name: seasy-overlay
+    name: seasy_overlay

@@ -4,7 +4,7 @@ services:
 #  adminserver:
 #    image: 192.168.134.142/seasy/seasy-cloud-adminserver:0.0.1-SNAPSHOT
 #    networks:
-#      - seasy-overlay
+#      - seasy_overlay
 #    ports:
 #      - "3100:3100"
 #    environment:
@@ -12,7 +12,7 @@ services:
   userservice:
     image: 192.168.134.142/seasy/seasy-cloud-userservice:0.0.1-SNAPSHOT
     networks:
-      - seasy-overlay
+      - seasy_overlay
     ports:
       - "4001:4001"
     environment:
@@ -26,7 +26,7 @@ services:
   frontweb:
     image: 192.168.134.142/seasy/seasy-cloud-frontweb:0.0.1-SNAPSHOT
     networks:
-      - seasy-overlay
+      - seasy_overlay
     ports:
       - "4002:4002"
     environment:
@@ -38,6 +38,6 @@ services:
         constraints:
           - node.role == worker
 networks:
-  seasy-overlay:
+  seasy_overlay:
     external: true
-    name: seasy-overlay
+    name: seasy_overlay
