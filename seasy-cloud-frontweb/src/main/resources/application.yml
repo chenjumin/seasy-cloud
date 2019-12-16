@@ -80,11 +80,14 @@ eureka:
 ---
 spring:
   profiles: pro
-  #cloud:
-    #inetutils:
+  cloud:
+    inetutils:
+      ignored-interfaces:
+      - ${IGNORED_INTERFACES_0}
+      - ${IGNORED_INTERFACES_1}
       #注册时用的IP网段
-    #  preferred-networks:
-    #  - 10.10.0
+      preferred-networks:
+      - ${PREFERRED_NETWORKS}
 eureka:
   instance:
     hostname: ${spring.cloud.client.ip-address}

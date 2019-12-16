@@ -56,10 +56,10 @@ eureka:
 ---
 spring:
   profiles: pro
-  #cloud:
-  #  inetutils:
-  #    preferred-networks:
-  #    - 10.10.0
+  cloud:
+    inetutils:
+      preferred-networks:
+      - ${PREFERRED_NETWORKS}
 
 eureka:
   instance:
@@ -70,4 +70,4 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://admin:123456@eureka1:3001/eureka/,http://admin:123456@eureka2:3001/eureka/ 
+      defaultZone: http://admin:123456@eureka1:3001/eureka/,http://admin:123456@eureka2:3001/eureka/,http://admin:123456@eureka3:3001/eureka/
