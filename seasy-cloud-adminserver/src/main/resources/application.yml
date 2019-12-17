@@ -7,14 +7,14 @@ spring:
   #登录admin server的用户名和密码
   security:
     user:
-      name: cjm
-      password: 123
+      name: admin
+      password: admin
+  profiles:
+    active:
+    - pro
     
 eureka:
   instance:
-    hostname: ${spring.cloud.client.ip-address}
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    prefer-ip-address: true
     ## 续约过期的淘汰时间
     lease-expiration-duration-in-seconds: 15
     ## 续约的心跳频率
@@ -27,9 +27,7 @@ eureka:
       user.password: ${spring.security.user.password}
   client:
     #表示eureka client间隔多久去拉取服务注册信息，默认为30秒
-    registry-fetch-interval-seconds: 5  
-    service-url:
-      defaultZone: http://admin:123456@${EUREKA_SERVER_ADDRESS}:3001/eureka/
+    registry-fetch-interval-seconds: 5
  
 logging:
   config: config/logback.xml
@@ -46,3 +44,32 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+
+---
+spring:
+  profiles: dev
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://admin:123456@${spring.cloud.client.ip-address}:3001/eureka/
+  
+---
+spring:
+  profiles: pro
+  cloud:
+    inetutils:
+      #注册时用的IP网段
+      preferred-networks:
+      - ${PREFERRED_NETWORKS}
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://admin:123456@${EUREKA_SERVER_ADDRESS}:3001/eureka/
