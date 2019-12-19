@@ -5,7 +5,9 @@ services:
   es-server:
     image: elasticsearch:6.8.5
     networks:
-      - seasy_overlay
+      seasy_overlay:
+        aliases: 
+          - es-server
     ports:
       - "9200:9200"
       - "9300:9300"
