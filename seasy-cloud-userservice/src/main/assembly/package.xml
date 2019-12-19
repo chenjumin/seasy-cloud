@@ -37,6 +37,15 @@
         </fileSet>
         
         <fileSet>  
+            <directory>../skywalking/agent</directory>    
+            <includes>  
+                <include>**/*.jar</include>
+                <include>**/*.config</include>
+            </includes> 
+            <outputDirectory>/agent</outputDirectory>  
+        </fileSet>
+        
+        <fileSet>  
             <directory>target</directory>    
             <includes>  
                 <include>seasy-cloud-userservice.jar</include>

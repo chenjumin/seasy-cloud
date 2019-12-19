@@ -8,4 +8,4 @@ RUN chmod 777 docker_run.sh
 
 EXPOSE 4002
 
-CMD ["sh", "docker_run.sh"]
+ENTRYPOINT -Xms512m -Xmx512m -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=utf-8 -javaagent:agent/skywalking-agent.jar -Dskywalking.agent.service_name=frontweb -Dskywalking.collector.backend_service=skywalking-oap:11800 -jar seasy-cloud-frontweb.jar
