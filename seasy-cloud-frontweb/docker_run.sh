@@ -1,0 +1,1 @@
+java -javaagent:agent/skywalking-agent.jar -Dskywalking.agent.service_name=frontweb -Dskywalking.collector.backend_service=skywalking-oap:11800 -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=utf-8 -jar seasy-cloud-frontweb.jar
