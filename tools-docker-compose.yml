@@ -1,83 +1,51 @@
 version: "3.7"
 
 services:
-  #elasticsearch服务
-  es-server:
-    image: elasticsearch:6.8.5
-    networks:
-      seasy_overlay:
-        aliases: 
-          - es-server
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-    deploy:
-      mode: replicated
-      replicas: 1
-      placement:
-        constraints:
-          - node.role == manager
-    environment:
-      - cluster.name=es-cluster
-      - node.name=es-node1
-      - discovery.type=single-node
-      - ES_JAVA_OPTS=-Xms512m -Xmx512m
-      - TZ=Asia/Shanghai
-    volumes:
-      - es-data:/usr/share/elasticsearch/data
-      - es-logs:/usr/share/elasticsearch/logs
   #skywalking-oap服务
-  skywalking-oap:
+  oap:
     image: apache/skywalking-oap-server:6.5.0
     networks:
-      seasy_overlay:
-        aliases: 
-          - skywalking-oap
-    depends_on:
-      - "es-server"
+      - seasy_overlay
+      #seasy_overlay:
+      #  aliases: 
+      #    - oap
+    #depends_on:
+    #  - es-server
     ports:
-      - "11800:11800"
-      - "12800:12800"
+      #Http默认端口 12800，gRPC默认端口 11800
+      - 11800:11800
+      - 12800:12800
+    environment:
+      #存储类型有：elasticsearch、h2、mysql
+      #- SW_STORAGE=elasticsearch
+      #- SW_STORAGE_ES_CLUSTER_NODES=es-server:9200
+      - TZ=Asia/Shanghai
     deploy:
       mode: replicated
       replicas: 1
       placement:
         constraints:
           - node.role == manager
-    environment:
-      #存储类型有：elasticsearch、h2、mysql
-      - SW_STORAGE=elasticsearch
-      - SW_STORAGE_ES_CLUSTER_NODES=es-server:9200
-      - TZ=Asia/Shanghai
   #skywalking-ui服务
   skywalking-ui:
     image: apache/skywalking-ui:6.5.0
     networks:
       - seasy_overlay
     depends_on:
-      - "skywalking-oap"
+      - oap
     ports:
-      - "18080:8080"
+      - 18080:8080
+    environment:
+      - SW_OAP_ADDRESS=oap:12800
+    #  - collector.ribbon.listOfServers=oap:12800
     deploy:
       mode: replicated
       replicas: 1
       placement:
         constraints:
           - node.role == manager
-    environment:
-      - collector.ribbon.listOfServers=skywalking-oap:12800
-      - security.user.admin.password=admin
 networks:
   seasy_overlay:
     external: true
     name: seasy_overlay
-volumes:
-  es-data:
-    driver: local
-    driver_opts:
-      mountpoint: es/data
-  es-logs:
-    driver: local
-    driver_opts:
-      mountpoint: es/logs
   

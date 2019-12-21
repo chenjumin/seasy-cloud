@@ -68,6 +68,11 @@ management:
 ---
 spring:
   profiles: dev
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://localhost:9411
 eureka:
   instance:
     hostname: ${spring.cloud.client.ip-address}
@@ -80,6 +85,12 @@ eureka:
 ---
 spring:
   profiles: pro
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    enabled: false
+    base-url: http://zipkin:9411
   cloud:
     inetutils:
       #注册时用的IP网段
