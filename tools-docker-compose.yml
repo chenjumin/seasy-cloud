@@ -6,9 +6,6 @@ services:
     image: apache/skywalking-oap-server:6.5.0
     networks:
       - seasy_overlay
-      #seasy_overlay:
-      #  aliases: 
-      #    - oap
     #depends_on:
     #  - es-server
     ports:
@@ -37,7 +34,6 @@ services:
       - 18080:8080
     environment:
       - SW_OAP_ADDRESS=oap:12800
-    #  - collector.ribbon.listOfServers=oap:12800
     deploy:
       mode: replicated
       replicas: 1
