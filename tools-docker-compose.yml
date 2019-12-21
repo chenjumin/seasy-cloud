@@ -1,21 +1,47 @@
 version: "3.7"
 
 services:
+  #elasticsearch服务
+  esserver:
+    image: elasticsearch:6.4.3
+    networks:
+      - seasy_overlay
+    ports:
+      #9200为http协议，用于外部通讯
+      #9300位tcp协议，集群节点之间通讯
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - cluster.name=es-cluster
+      - node.name=es-node1
+      - discovery.type=single-node
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - TZ=Asia/Shanghai
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+      - es-logs:/usr/share/elasticsearch/logs
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
   #skywalking-oap服务
   oap:
     image: apache/skywalking-oap-server:6.5.0
     networks:
       - seasy_overlay
-    #depends_on:
-    #  - es-server
+    depends_on:
+      - esserver
     ports:
       #Http默认端口 12800，gRPC默认端口 11800
       - 11800:11800
       - 12800:12800
     environment:
       #存储类型有：elasticsearch、h2、mysql
-      #- SW_STORAGE=elasticsearch
-      #- SW_STORAGE_ES_CLUSTER_NODES=es-server:9200
+      - SW_STORAGE=elasticsearch
+      - SW_STORAGE_ES_CLUSTER_NODES=esserver:9200
       - TZ=Asia/Shanghai
     deploy:
       mode: replicated
@@ -78,3 +104,12 @@ networks:
     external: true
     name: seasy_overlay
   
+volumes:
+  es-data:
+    driver: local
+    driver_opts:
+      mountpoint: es/data
+  es-logs:
+    driver: local
+    driver_opts:
+      mountpoint: es/logs

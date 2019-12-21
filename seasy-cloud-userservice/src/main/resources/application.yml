@@ -57,14 +57,14 @@ eureka:
 spring:
   profiles: pro
   sleuth:
-    enabled: true
+    enabled: false
     sampler:
       probability: 1.0
     hystrix:
       strategy:
         enabled: true
   zipkin:
-    enabled: true
+    enabled: false
     base-url: http://zipkin:9411
   cloud:
     inetutils:

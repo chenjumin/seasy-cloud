@@ -91,7 +91,7 @@ eureka:
 spring:
   profiles: pro
   sleuth:
-    enabled: true
+    enabled: false
     sampler:
       #采样率，默认值为0.1
       probability: 1.0
@@ -99,7 +99,7 @@ spring:
       strategy:
         enabled: true
   zipkin:
-    enabled: true
+    enabled: false
     base-url: http://zipkin:9411
   cloud:
     inetutils:
