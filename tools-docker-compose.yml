@@ -18,9 +18,26 @@ services:
       - http.cors.enabled=true
       - http.cors.allow-origin=*
       - TZ=Asia/Shanghai
-    volumes:
-      - es-data:/usr/share/elasticsearch/data
-      - es-logs:/usr/share/elasticsearch/logs
+    #volumes:
+    #  - es-data:/usr/share/elasticsearch/data:rw
+    #  - es-logs:/usr/share/elasticsearch/logs:rw
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+  #kibana服务
+  kibana:
+    image: kibana:6.4.3
+    networks:
+      - seasy_overlay
+    depends_on:
+      - esserver
+    ports:
+      - 5601:5601
+    environment:
+      - ELASTICSEARCH_URL=http://esserver:9200
     deploy:
       mode: replicated
       replicas: 1
@@ -107,9 +124,5 @@ networks:
 volumes:
   es-data:
     driver: local
-    driver_opts:
-      mountpoint: es/data
   es-logs:
     driver: local
-    driver_opts:
-      mountpoint: es/logs
