@@ -32,6 +32,13 @@
 	    <groupId>org.springframework.cloud</groupId>
 	    <artifactId>spring-cloud-starter-zipkin</artifactId>
 	</dependency>
+	
+	<!-- apollo -->
+	<dependency>
+    	<groupId>com.ctrip.framework.apollo</groupId>
+    	<artifactId>apollo-client</artifactId>
+    	<version>1.5.1</version>
+	</dependency>
   </dependencies>
   
   <build>
