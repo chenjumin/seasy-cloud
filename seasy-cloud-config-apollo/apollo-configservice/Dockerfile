@@ -3,7 +3,7 @@ MAINTAINER seasy@163.com
 
 WORKDIR /opt/seasy/apollo-configservice
 COPY target/apollo-configservice/apollo-configservice .
-RUN chmod 777 startup.sh
+RUN chmod 777 scripts/startup.sh
 
 EXPOSE 3202
-CMD ["startup.sh"]
+CMD ["scripts/startup.sh"]

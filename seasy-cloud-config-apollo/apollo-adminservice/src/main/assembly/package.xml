@@ -30,7 +30,7 @@
                 <include>*.sh</include>
             </includes> 
 			<fileMode>0777</fileMode>
-            <outputDirectory>/</outputDirectory>  
+            <outputDirectory>/scripts</outputDirectory>  
         </fileSet>
         
         <fileSet>  
