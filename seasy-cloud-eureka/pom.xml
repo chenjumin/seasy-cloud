@@ -92,6 +92,13 @@
 					<dockerfile>Dockerfile</dockerfile>
 					<repository>${docker.image.prefix}/${project.artifactId}</repository>
 					<tag>${project.version}</tag> <!-- 不指定tag默认为latest -->
+					<buildArgs>
+						<!-- 提供参数向Dockerfile传递，在Dockerfile中需要用ARG定义该参数 -->
+						<eureka_security_uid>${eureka_security_uid}</eureka_security_uid>
+						<eureka_security_pwd>${eureka_security_pwd}</eureka_security_pwd>
+						<preferred_networks>${preferred_networks}</preferred_networks>
+						<profiles_active>${profiles_active}</profiles_active>
+					</buildArgs>
 				</configuration>
 			</plugin>
       </plugins>

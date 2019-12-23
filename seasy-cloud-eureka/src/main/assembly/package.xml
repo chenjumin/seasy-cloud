@@ -11,17 +11,6 @@
   	
     <fileSets>
         <fileSet>  
-            <directory>./</directory>  
-            <includes>  
-                <include>run.bat</include>
-                <include>run.sh</include>
-                <include>docker_run.sh</include>
-            </includes>  
-			<fileMode>0777</fileMode>
-            <outputDirectory>/</outputDirectory>  
-        </fileSet>
-        
-        <fileSet>  
             <directory>src/main/resources</directory>  
             <includes>
                 <include>*.yml</include>

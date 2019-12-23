@@ -6,11 +6,11 @@ spring:
     name: seasy-cloud-eureka
   security:
     user:
-      name: admin
-      password: 123456
+      name: ${eureka_security_uid:admin}
+      password: ${eureka_security_pwd:123456}
   profiles:
     active:
-    - pro
+    - ${profiles_active:dev}
 
 eureka:
   instance:
@@ -51,7 +51,7 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://admin:123456@${spring.cloud.client.ip-address}:${server.port}/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${spring.cloud.client.ip-address}:${server.port}/eureka/
     
 ---
 spring:
@@ -59,15 +59,15 @@ spring:
   cloud:
     inetutils:
       preferred-networks:
-      - ${PREFERRED_NETWORKS}
+      - ${preferred_networks}
 
 eureka:
   instance:
     hostname: ${EUREKA_HOSTNAME}
     prefer-ip-address: false
-    instance-id: ${EUREKA_HOSTNAME}:${server.port}  
+    instance-id: ${EUREKA_HOSTNAME}:${server.port}
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://admin:123456@eureka1:3001/eureka/,http://admin:123456@eureka2:3001/eureka/,http://admin:123456@eureka3:3001/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka1:${server.port}/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka2:${server.port}/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@eureka3:${server.port}/eureka/

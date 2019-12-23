@@ -11,7 +11,7 @@ services:
       - "3001:3001"
     environment:
       - EUREKA_HOSTNAME=eureka1
-      - PREFERRED_NETWORKS=10.10.0
+    #  - PREFERRED_NETWORKS=10.10.0
   eureka2:
     image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
     networks:
@@ -22,7 +22,7 @@ services:
       - "3002:3001"
     environment:
       - EUREKA_HOSTNAME=eureka2
-      - PREFERRED_NETWORKS=10.10.0
+    #  - PREFERRED_NETWORKS=10.10.0
   eureka3:
     image: 192.168.134.142/seasy/seasy-cloud-eureka:0.0.1-SNAPSHOT
     networks:
@@ -33,7 +33,7 @@ services:
       - "3003:3001"
     environment:
       - EUREKA_HOSTNAME=eureka3
-      - PREFERRED_NETWORKS=10.10.0
+    #  - PREFERRED_NETWORKS=10.10.0
 networks:
   seasy_overlay:
     external: true
