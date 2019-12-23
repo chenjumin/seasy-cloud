@@ -3,6 +3,10 @@ spring:
     name: apollo-configservice
   profiles:
     active: github
+  cloud:
+    inetutils:
+      preferred-networks:
+      - ${preferred_networks}
       
 ctrip:
   appid: 100003171

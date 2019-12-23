@@ -1,9 +1,3 @@
-spring:
-  cloud:
-    inetutils:
-      preferred-networks:
-      - ${preferred_networks}
-      
 eureka:
   instance:
     hostname: ${spring.cloud.client.ip-address}
