@@ -9,7 +9,8 @@ eureka:
     lease-renewal-interval-in-seconds: 5
   client:
     service-url:
-      defaultZone: http://admin:123456@169.254.159.19:3001/eureka/
+      #被apolloconfigdb表的值覆盖
+      defaultZone: http://localhost:3001/eureka/
     healthcheck:
       enabled: true
     eureka-service-url-poll-interval-seconds: 60

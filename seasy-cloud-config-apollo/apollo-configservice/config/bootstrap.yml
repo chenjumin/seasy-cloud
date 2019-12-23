@@ -7,12 +7,10 @@ eureka:
     health-check-url-path: /health
     lease-expiration-duration-in-seconds: 15
     lease-renewal-interval-in-seconds: 5
-  server:
-    peerEurekaNodesUpdateIntervalMs: 60000
-    enableSelfPreservation: false
   client:
     service-url:
-      defaultZone: http://admin:123456@169.254.159.19:3001/eureka/
+      #被apolloconfigdb表的值覆盖
+      defaultZone: http://localhost:3001/eureka/
     healthcheck:
       enabled: true
     eureka-service-url-poll-interval-seconds: 60

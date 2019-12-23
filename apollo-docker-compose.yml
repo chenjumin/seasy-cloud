@@ -5,7 +5,8 @@ services:
   mysql:
     image: 192.168.134.142/common/mysql:5.7.28
     networks:
-      - seasy_overlay
+      seasy_overlay:
+        ipv4_address: 10.10.0.250
     ports:
       - 3306:3306
     environment:
@@ -30,13 +31,12 @@ services:
   apollo-configservice:
     image: 192.168.134.142/seasy/apollo-configservice:1.5.1
     networks:
-      - seasy_overlay
+      seasy_overlay:
+        ipv4_address: 10.10.0.251
     ports:
       - "3201:3201"
     depends_on:
       - mysql
-    environment:
-      - PREFERRED_NETWORKS=10.10.0
     volumes:
       - /opt/logs/apollo/configservice:/opt/logs/apollo/configservice
     deploy:
@@ -54,14 +54,13 @@ services:
   apollo-adminservice:
     image: 192.168.134.142/seasy/apollo-adminservice:1.5.1
     networks:
-      - seasy_overlay
+      seasy_overlay:
+        ipv4_address: 10.10.0.252
     ports:
       - "3202:3202"
     depends_on:
       - mysql
       - apollo-configservice
-    environment:
-      - PREFERRED_NETWORKS=10.10.0
     volumes:
       - /opt/logs/apollo/adminservice:/opt/logs/apollo/adminservice
     deploy:
@@ -79,15 +78,14 @@ services:
   apollo-portal:
     image: 192.168.134.142/seasy/apollo-portal:1.5.1
     networks:
-      - seasy_overlay
+      seasy_overlay:
+        ipv4_address: 10.10.0.253
     ports:
       - "3203:3203"
     depends_on:
       - mysql
       - apollo-configservice
       - apollo-adminservice
-    environment:
-      - PREFERRED_NETWORKS=10.10.0
     volumes:
       - /opt/logs/apollo/portal:/opt/logs/apollo/portal
     deploy:

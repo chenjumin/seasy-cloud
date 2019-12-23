@@ -16,6 +16,7 @@ spring:
 app:
   id: ${spring.application.name}
 apollo:
+  meta: ${apollo_meta}
   bootstrap:
     enable: true
     namespaces: application
