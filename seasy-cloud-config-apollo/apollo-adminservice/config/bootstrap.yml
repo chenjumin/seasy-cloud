@@ -12,7 +12,6 @@ eureka:
       defaultZone: http://admin:123456@169.254.159.19:3001/eureka/
     healthcheck:
       enabled: true
-    #eurekaServiceUrlPollIntervalSeconds: 60
     eureka-service-url-poll-interval-seconds: 60
 
 management:
