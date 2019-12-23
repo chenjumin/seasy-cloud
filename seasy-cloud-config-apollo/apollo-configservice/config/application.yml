@@ -6,7 +6,7 @@ spring:
   cloud:
     inetutils:
       preferred-networks:
-      - ${preferred_networks}
+      - 10.10.0
       
 ctrip:
   appid: 100003171
