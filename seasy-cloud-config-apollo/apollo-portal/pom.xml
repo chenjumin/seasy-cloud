@@ -91,7 +91,7 @@
 					<contextDirectory>${project.basedir}</contextDirectory>
 					<dockerfile>Dockerfile</dockerfile>
 					<repository>${docker.image.prefix}/${project.artifactId}</repository>
-					<tag>${project.version}</tag> <!-- 不指定tag默认为latest -->
+					<tag>${apollo_version}</tag> <!-- 不指定tag默认为latest -->
 				</configuration>
 			</plugin>
       </plugins>
