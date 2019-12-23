@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  #mysql
+  mysql:
+    image: 192.168.134.142/common/mysql:5.7.28
+    networks:
+      seasy_overlay:
+        ipv4_address: 10.10.0.250
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - TZ=Asia/Shanghai
+    volumes:
+      - mysql-data:/var/lib/mysql:rw
+      - mysql-logs:/var/log/mysql:rw
+      - /etc/localtime:/etc/localtime:ro
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+networks:
+  seasy_overlay:
+    external: true
+    name: seasy_overlay
+volumes:
+  mysql-data:
+  mysql-logs:
