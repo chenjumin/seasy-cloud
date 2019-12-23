@@ -3,7 +3,7 @@ spring:
     name: apollo-configservice
   profiles:
     active: github
-
+      
 ctrip:
   appid: 100003171
 

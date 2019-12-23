@@ -5,8 +5,7 @@ services:
   apollo-configservice:
     image: 192.168.134.142/seasy/apollo-configservice:1.5.1
     networks:
-      seasy_overlay:
-        ipv4_address: 10.10.0.251
+      - seasy_overlay
     ports:
       - "3201:3201"
     volumes:
@@ -26,8 +25,7 @@ services:
   apollo-adminservice:
     image: 192.168.134.142/seasy/apollo-adminservice:1.5.1
     networks:
-      seasy_overlay:
-        ipv4_address: 10.10.0.252
+      - seasy_overlay
     ports:
       - "3202:3202"
     depends_on:
@@ -49,8 +47,7 @@ services:
   apollo-portal:
     image: 192.168.134.142/seasy/apollo-portal:1.5.1
     networks:
-      seasy_overlay:
-        ipv4_address: 10.10.0.253
+      - seasy_overlay
     ports:
       - "3203:3203"
     depends_on:

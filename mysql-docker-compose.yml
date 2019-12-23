@@ -5,8 +5,7 @@ services:
   mysql:
     image: 192.168.134.142/common/mysql:5.7.28
     networks:
-      seasy_overlay:
-        ipv4_address: 10.10.0.250
+      - seasy_overlay
     ports:
       - 3306:3306
     environment:
