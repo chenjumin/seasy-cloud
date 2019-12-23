@@ -9,7 +9,7 @@ services:
     ports:
       - "3201:3201"
     volumes:
-      - /opt/logs/apollo/configservice:/opt/logs/apollo/configservice
+      - apollo-configservice-logs:/opt/logs/apollo/configservice
     deploy:
       mode: replicated
       replicas: 1
@@ -31,7 +31,7 @@ services:
     depends_on:
       - apollo-configservice
     volumes:
-      - /opt/logs/apollo/adminservice:/opt/logs/apollo/adminservice
+      - apollo-adminservice-logs:/opt/logs/apollo/adminservice
     deploy:
       mode: replicated
       replicas: 1
@@ -54,7 +54,7 @@ services:
       - apollo-configservice
       - apollo-adminservice
     volumes:
-      - /opt/logs/apollo/portal:/opt/logs/apollo/portal
+      - apollo-portal-logs:/opt/logs/apollo/portal
     deploy:
       mode: replicated
       replicas: 1
@@ -70,3 +70,7 @@ networks:
   seasy_overlay:
     external: true
     name: seasy_overlay
+volumes:
+  apollo-configservice-logs:
+  apollo-adminservice-logs:
+  apollo-portal-logs:

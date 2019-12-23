@@ -5,4 +5,4 @@ WORKDIR /opt/seasy/apollo-portal
 COPY target/apollo-portal/apollo-portal .
 
 EXPOSE 3203
-CMD ["sh", "scripts/startup.sh"]
+CMD ["scripts/startup.sh"]

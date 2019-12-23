@@ -9,4 +9,4 @@ COPY target/apollo-adminservice/apollo-adminservice .
 ENV preferred_networks=$preferred_networks
 
 EXPOSE 3202
-CMD ["sh", "scripts/startup.sh"]
+CMD ["scripts/startup.sh"]
