@@ -3,6 +3,7 @@ MAINTAINER seasy@163.com
 
 WORKDIR /opt/seasy/apollo-portal
 COPY target/apollo-portal/apollo-portal .
+RUN chmod 777 scripts/startup.sh
 
 EXPOSE 3203
 CMD ["scripts/startup.sh"]
