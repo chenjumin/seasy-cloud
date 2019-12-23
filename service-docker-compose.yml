@@ -16,6 +16,11 @@ services:
       placement:
         constraints:
           - node.role == manager
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
   userservice:
     image: 192.168.134.142/seasy/seasy-cloud-userservice:0.0.1-SNAPSHOT
     networks:
@@ -31,6 +36,11 @@ services:
       placement:
         constraints:
           - node.role == worker
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
   frontweb:
     image: 192.168.134.142/seasy/seasy-cloud-frontweb:0.0.1-SNAPSHOT
     networks:
@@ -46,6 +56,11 @@ services:
       placement:
         constraints:
           - node.role == worker
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
 networks:
   seasy_overlay:
     external: true

@@ -16,7 +16,8 @@
                 <include>run.bat</include>
                 <include>run.sh</include>
                 <include>docker_run.sh</include>
-            </includes>  
+            </includes> 
+			<fileMode>0777</fileMode>
             <outputDirectory>/</outputDirectory>  
         </fileSet>
         
@@ -50,6 +51,7 @@
             <includes>  
                 <include>seasy-cloud-userservice.jar</include>
             </includes> 
+			<fileMode>0777</fileMode>
             <outputDirectory>/</outputDirectory>  
         </fileSet>
     </fileSets>  

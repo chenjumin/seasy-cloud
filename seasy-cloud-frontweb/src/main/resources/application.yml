@@ -51,9 +51,9 @@ ribbon:
 logging:
   config: config/logback.xml
   level:
-    root: debug
+    root: INFO
     org.springframework.boot.autoconfigure: WARN
-    com.seasy.cloud.frontweb.feignclient.UserFeignClient: debug
+    com.seasy.cloud.frontweb.feignclient.UserFeignClient: INFO
    
 #开启所有的管理端点给Admin Server进行监控
 management:
