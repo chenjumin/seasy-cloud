@@ -21,6 +21,7 @@
   	<module>seasy-cloud-adminserver</module>
   	<module>seasy-cloud-userservice</module>
   	<module>seasy-cloud-frontweb</module>
+  	<module>seasy-cloud-config-apollo</module>
   </modules>
 
   <properties>
