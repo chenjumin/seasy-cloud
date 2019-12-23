@@ -1,5 +1,4 @@
-<assembly>  
-	<!-- mvn clean assembly:assembly -->
+<assembly>
     <id>release</id> 
      
     <!-- format: tar.gz，zip, dir -->   
@@ -7,20 +6,7 @@
         <format>dir</format>  
     </formats>
     
-<!--     <includeBaseDirectory>false</includeBaseDirectory> -->
-  	
     <fileSets>
-        <fileSet>  
-            <directory>./</directory>  
-            <includes>  
-                <include>run.bat</include>
-                <include>run.sh</include>
-                <include>docker_run.sh</include>
-            </includes> 
-			<fileMode>0777</fileMode>
-            <outputDirectory>/</outputDirectory>  
-        </fileSet>
-        
         <fileSet>  
             <directory>src/main/resources</directory>  
             <includes>

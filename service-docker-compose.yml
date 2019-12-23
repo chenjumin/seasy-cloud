@@ -7,9 +7,6 @@ services:
       - seasy_overlay
     ports:
       - "3100:3100"
-    environment:
-      - EUREKA_SERVER_ADDRESS=eureka
-      - PREFERRED_NETWORKS=10.10.0
     deploy:
       mode: replicated
       replicas: 1
@@ -27,9 +24,6 @@ services:
       - seasy_overlay
     ports:
       - "4001:4001"
-    environment:
-      - EUREKA_SERVER_ADDRESS=eureka
-      - PREFERRED_NETWORKS=10.10.0
     deploy:
       mode: replicated
       replicas: 2
@@ -47,9 +41,6 @@ services:
       - seasy_overlay
     ports:
       - "4002:4002"
-    environment:
-      - EUREKA_SERVER_ADDRESS=eureka
-      - PREFERRED_NETWORKS=10.10.0
     deploy:
       mode: replicated
       replicas: 1

@@ -1,13 +1,10 @@
 <assembly>  
-	<!-- mvn clean assembly:assembly -->
     <id>release</id> 
      
     <!-- format: tar.gz，zip, dir -->   
     <formats>
         <format>dir</format>  
     </formats>
-    
-<!--     <includeBaseDirectory>false</includeBaseDirectory> -->
   	
     <fileSets>
         <fileSet>  

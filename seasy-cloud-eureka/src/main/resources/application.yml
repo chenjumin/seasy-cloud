@@ -6,8 +6,8 @@ spring:
     name: seasy-cloud-eureka
   security:
     user:
-      name: ${eureka_security_uid:admin}
-      password: ${eureka_security_pwd:123456}
+      name: ${spring_security_uid:admin}
+      password: ${spring_security_pwd:123456}
   profiles:
     active:
     - ${profiles_active:dev}

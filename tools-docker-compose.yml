@@ -81,49 +81,10 @@ services:
         delay: 5s
         max_attempts: 3
         window: 120s
-  #zipkin服务
-  zipkin:
-    image: openzipkin/zipkin:2.19
-    networks:
-      - seasy_overlay
-    #network_mode: host
-    ports:
-      - 9411:9411
-    environment:
-      #mem，mysql， elasticsearch
-      - STORAGE_TYPE=mem
-      - JAVA_OPTS=-Xms256m -Xmx256m -Dlogging.level.zipkin2=DEBUG
-      - TZ=Asia/Shanghai
-      #MYSQL，需要5.6或者5.7
-      #- MYSQL_DB=zipkin
-      #- MYSQL_USER=root
-      #- MYSQL_PASS=root
-      #- MYSQL_HOST=192.168.47.150
-      #- MYSQL_TCP_PORT=3306
-      #- MYSQL_MAX_CONNECTIONS=100
-      #elasticsearch
-      #- ES_HOSTS=192.168.113.168:9200
-      #RABBIT
-      #- RABBIT_ADDRESSES=192.168.47.150:5672
-      #- RABBIT_USER=admin
-      #- RABBIT_PASSWORD=admin
-      #- RABBIT_QUEUE=zipkin
-    deploy:
-      mode: replicated
-      replicas: 1
-      placement:
-        constraints:
-          - node.role == manager
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
 networks:
   seasy_overlay:
     external: true
     name: seasy_overlay
-  
 volumes:
   es-data:
     driver: local
