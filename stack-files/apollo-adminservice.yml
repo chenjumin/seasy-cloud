@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  apollo-adminservice:
+    image: 192.168.134.142/seasy/apollo-adminservice:1.5.1
+    networks:
+      - seasy_overlay
+    ports:
+      - "3202:3202"
+    depends_on:
+      - apollo-configservice
+    volumes:
+      - apollo-adminservice-log:/opt/logs/apollo/adminservice
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+networks:
+  seasy_overlay:
+    external: true
+    name: seasy_overlay
+volumes:
+  apollo-adminservice-log:
