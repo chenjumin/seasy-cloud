@@ -3,7 +3,8 @@ MAINTAINER seasy@163.com
 
 WORKDIR /opt/seasy/apollo-portal
 COPY target/apollo-portal/apollo-portal .
-RUN chmod 777 scripts/startup.sh
+
+RUN apt-get update && apt-get install -y procps && chmod 777 scripts/startup.sh
 
 EXPOSE 3203
 CMD ["scripts/startup.sh"]
