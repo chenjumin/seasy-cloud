@@ -11,6 +11,11 @@
   
   <artifactId>seasy-cloud-config-apollo</artifactId>
   <packaging>pom</packaging>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <apollo_version>1.5.1</apollo_version>
+  </properties>
 
   <modules>
   	<module>apollo-configservice</module>

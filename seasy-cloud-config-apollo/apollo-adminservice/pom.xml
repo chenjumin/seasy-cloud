@@ -9,21 +9,6 @@
   </parent>
   <artifactId>apollo-adminservice</artifactId>
   
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <apollo_version>1.5.1</apollo_version>
-  </properties>
-  
-  <dependencies>
-    <dependency>
-        <groupId>com.ctrip.framework.apollo</groupId>
-		<artifactId>apollo-adminservice</artifactId>
-		<version>${apollo_version}</version>
-		<scope>system</scope>
-		<systemPath>${basedir}/lib/apollo-adminservice-${apollo_version}.jar</systemPath>
-    </dependency>
-  </dependencies>
-  
   <build>
       <finalName>${project.artifactId}</finalName>
     

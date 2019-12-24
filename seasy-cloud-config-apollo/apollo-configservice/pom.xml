@@ -9,21 +9,6 @@
   </parent>
   <artifactId>apollo-configservice</artifactId>
   
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <apollo_version>1.5.1</apollo_version>
-  </properties>
-  
-  <dependencies>
-    <dependency>
-        <groupId>com.ctrip.framework.apollo</groupId>
-		<artifactId>apollo-configservice</artifactId>
-		<version>${apollo_version}</version>
-		<scope>system</scope>
-		<systemPath>${basedir}/lib/apollo-configservice-${apollo_version}.jar</systemPath>
-    </dependency>
-  </dependencies>
-  
   <build>
       <finalName>${project.artifactId}</finalName>
     
@@ -82,7 +67,7 @@
 						<id>default</id>
 						<goals>
 							<!--如果package时不想用docker打包,就注释掉这个goal-->
-							<goal>build</goal>
+<!-- 							<goal>build</goal> -->
 							<!-- <goal>push</goal> -->
 						</goals>
 					</execution>
