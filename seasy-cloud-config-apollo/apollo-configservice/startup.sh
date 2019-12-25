@@ -44,5 +44,3 @@ fi
 
 chmod a+x $SERVICE_NAME".jar"
 ./$SERVICE_NAME".jar" start
-
-exit 0;
