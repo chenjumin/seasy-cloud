@@ -1,17 +1,13 @@
 #!/bin/bash
 SERVICE_NAME=apollo-configservice
-
-## Adjust log dir if necessary
 LOG_DIR=/opt/logs/apollo/configservice
-
-## Adjust server port if necessary
-SERVER_PORT=${SERVER_PORT:=3201}
+SERVER_PORT=3201
 
 ## Create log directory if not existed because JDK 8+ won't do that
 mkdir -p $LOG_DIR
 
 ## Adjust memory settings if necessary
-export JAVA_OPTS="-Xms1024m -Xmx1024m -Xss256k -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:SurvivorRatio=8"
+export JAVA_OPTS="-Xms512m -Xmx512m -Xmn256m -Xss128k -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=512m -XX:SurvivorRatio=8"
 
 ## Only uncomment the following when you are using server jvm
 #export JAVA_OPTS="$JAVA_OPTS -server -XX:-ReduceInitialCardMarks"

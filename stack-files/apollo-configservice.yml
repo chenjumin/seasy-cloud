@@ -7,6 +7,10 @@ services:
       - seasy_overlay
     ports:
       - "3201:3201"
+    environment:
+      - DS_URL=jdbc:mysql://192.168.134.142:3306/ApolloConfigDB?characterEncoding=utf8&useSSL=false
+      - DS_USERNAME=root
+      - DS_PASSWORD=123456
     volumes:
       - apollo-configservice-log:/opt/logs/apollo/configservice
     deploy:
