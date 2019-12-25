@@ -79,7 +79,6 @@
 					<tag>${apollo_version}</tag> <!-- 不指定tag默认为latest -->
 					<buildArgs>
 						<!-- 提供参数向Dockerfile传递，在Dockerfile中需要用ARG定义该参数 -->
-						<apollo_meta>${apollo_meta}</apollo_meta>
 						<apollo_datasource_portal_url>${apollo_datasource_portal_url}</apollo_datasource_portal_url>
 						<apollo_datasource_username>${apollo_datasource_username}</apollo_datasource_username>
 						<apollo_datasource_password>${apollo_datasource_password}</apollo_datasource_password>

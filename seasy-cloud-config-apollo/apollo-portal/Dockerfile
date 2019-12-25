@@ -1,12 +1,10 @@
 FROM openjdk:8-jre
 MAINTAINER seasy@163.com
 
-ARG apollo_meta
 ARG apollo_datasource_portal_url
 ARG apollo_datasource_username
 ARG apollo_datasource_password
 
-ENV apollo_meta=$apollo_meta
 ENV apollo_datasource_portal_url=$apollo_datasource_portal_url
 ENV apollo_datasource_username=$apollo_datasource_username
 ENV apollo_datasource_password=$apollo_datasource_password
