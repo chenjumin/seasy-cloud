@@ -1,8 +1,10 @@
 spring:
   application:
     name: apollo-portal
-  profiles:
-    active: github,auth
+  datasource:
+    url: ${apollo_datasource_portal_url}
+    username: ${apollo_datasource_username}
+    password: ${apollo_datasource_password}
   jpa:
     properties:
       hibernate:

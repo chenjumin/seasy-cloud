@@ -1,8 +1,10 @@
 spring:
   application:
     name: apollo-adminservice
-  profiles:
-    active: github
+  datasource:
+    url: ${apollo_datasource_config_url}
+    username: ${apollo_datasource_username}
+    password: ${apollo_datasource_password}
 
 ctrip:
   appid: 100003172

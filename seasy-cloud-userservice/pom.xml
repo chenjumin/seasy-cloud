@@ -111,6 +111,7 @@
 						<eureka_security_uid>${eureka_security_uid}</eureka_security_uid>
 						<eureka_security_pwd>${eureka_security_pwd}</eureka_security_pwd>
 						<apollo_meta>${apollo_meta}</apollo_meta>
+						<apollo_env>${apollo_env}</apollo_env>
 					</buildArgs>
 				</configuration>
 			</plugin>

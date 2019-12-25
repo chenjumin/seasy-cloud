@@ -80,6 +80,9 @@
 					<buildArgs>
 						<!-- 提供参数向Dockerfile传递，在Dockerfile中需要用ARG定义该参数 -->
 						<preferred_networks>${preferred_networks}</preferred_networks>
+						<apollo_datasource_config_url>${apollo_datasource_config_url}</apollo_datasource_config_url>
+						<apollo_datasource_username>${apollo_datasource_username}</apollo_datasource_username>
+						<apollo_datasource_password>${apollo_datasource_password}</apollo_datasource_password>
 					</buildArgs>
 				</configuration>
 			</plugin>

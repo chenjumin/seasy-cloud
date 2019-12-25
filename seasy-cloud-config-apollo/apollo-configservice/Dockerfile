@@ -2,9 +2,14 @@ FROM openjdk:8-jre
 MAINTAINER seasy@163.com
 
 ARG preferred_networks
+ARG apollo_datasource_config_url
+ARG apollo_datasource_username
+ARG apollo_datasource_password
 
-#ENV REFRESH_DATE 2019-12-25
 ENV preferred_networks=$preferred_networks
+ENV apollo_datasource_config_url=$apollo_datasource_config_url
+ENV apollo_datasource_username=$apollo_datasource_username
+ENV apollo_datasource_password=$apollo_datasource_password
 
 WORKDIR /opt/seasy/apollo-configservice
 COPY target/apollo-configservice/apollo-configservice .
