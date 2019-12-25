@@ -7,11 +7,8 @@ services:
       - seasy_overlay
     ports:
       - "3203:3203"
-    depends_on:
-      - apollo-configservice
-      - apollo-adminservice
     volumes:
-      - apollo-portal-log:/opt/logs/apollo/portal
+      - apollo-portal-log:/opt/logs
     deploy:
       mode: replicated
       replicas: 1
@@ -20,7 +17,7 @@ services:
           - node.role == manager
       restart_policy:
         condition: on-failure
-        delay: 5s
+        delay: 15s
         max_attempts: 3
         window: 120s
 networks:
