@@ -11,6 +11,7 @@
             <directory>./</directory>  
             <includes>  
                 <include>apollo-configservice.conf</include>
+                <include>startup.sh</include>
             </includes>
             <outputDirectory>/</outputDirectory>  
         </fileSet>
@@ -22,15 +23,6 @@
                 <include>*.yml</include>
             </includes> 
             <outputDirectory>/config</outputDirectory>  
-        </fileSet>
-        
-        <fileSet>  
-            <directory>scripts</directory>    
-            <includes>  
-                <include>*.sh</include>
-            </includes> 
-			<fileMode>0777</fileMode>
-            <outputDirectory>/scripts</outputDirectory>  
         </fileSet>
         
         <fileSet>  
