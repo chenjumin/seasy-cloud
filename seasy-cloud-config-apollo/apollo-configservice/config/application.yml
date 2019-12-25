@@ -1,10 +1,8 @@
 spring:
   application:
     name: apollo-configservice
-  datasource:
-    url: ${apollo_datasource_config_url}
-    username: ${apollo_datasource_username}
-    password: ${apollo_datasource_password}
+  profiles:
+    active: github
 
 ctrip:
   appid: 100003171
