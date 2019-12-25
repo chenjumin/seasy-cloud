@@ -3,16 +3,12 @@ spring:
     name: apollo-adminservice
   profiles:
     active: github
-  cloud:
-    inetutils:
-      preferred-networks:
-      - ${preferred_networks}
 
 ctrip:
   appid: 100003172
-  
+
 server:
   port: 3202
-  
+
 logging:
-  file: /opt/logs/apollo/adminservice/apollo-adminservice.log
+  file: /opt/logs/apollo-adminservice.log

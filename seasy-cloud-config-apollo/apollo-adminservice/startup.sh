@@ -1,5 +1,5 @@
 #!/bin/bash
-SERVICE_NAME=apollo-configservice
+SERVICE_NAME=apollo-adminservice
 LOG_DIR=/opt/logs
 
 mkdir -p $LOG_DIR
