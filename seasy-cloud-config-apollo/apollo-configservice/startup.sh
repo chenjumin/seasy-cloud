@@ -5,7 +5,7 @@ LOG_DIR=/opt/logs/apollo/configservice
 SERVER_PORT=3201
 
 #preferred_networks=10.10.0
-echo preferred_networks
+#echo preferred_networks
 
 ## Create log directory if not existed because JDK 8+ won't do that
 mkdir -p $LOG_DIR
