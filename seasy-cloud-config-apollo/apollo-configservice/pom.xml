@@ -77,6 +77,10 @@
 					<dockerfile>Dockerfile</dockerfile>
 					<repository>${docker.image.prefix}/${project.artifactId}</repository>
 					<tag>${apollo_version}</tag> <!-- 不指定tag默认为latest -->
+					<buildArgs>
+						<!-- 提供参数向Dockerfile传递，在Dockerfile中需要用ARG定义该参数 -->
+						<preferred_networks>${preferred_networks}</preferred_networks>
+					</buildArgs>
 				</configuration>
 			</plugin>
       </plugins>
