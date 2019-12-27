@@ -35,12 +35,13 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 5000
-                
+
+#服务负载均衡                
 ribbon:
   eureka:
     enabled: true
-  #connectTimeout: 10000
-  #readTimeout: 10000
+  connectTimeout: 10000
+  readTimeout: 10000
   #maxAutoRetries: 0
   #负载均衡
   #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
@@ -48,7 +49,6 @@ ribbon:
 logging:
   config: config/logback.xml
   level:
-    root: INFO
     org.springframework.boot.autoconfigure: WARN
     com.seasy.cloud.frontweb.feignclient.UserFeignClient: INFO
    
