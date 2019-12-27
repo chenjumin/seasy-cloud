@@ -22,7 +22,8 @@ apollo:
     namespaces: application
   logging:
     level:
-      refresh: true
+      refresh: 
+        enabled: true
       
 #Feign的配置信息
 feign:
