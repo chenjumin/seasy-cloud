@@ -20,10 +20,6 @@ apollo:
   bootstrap:
     enable: true
     namespaces: application
-  logging:
-    level:
-      refresh: 
-        enabled: true
       
 #Feign的配置信息
 feign:
@@ -62,6 +58,7 @@ ribbon:
 logging:
   config: config/logback.xml
   level:
+    root: INFO
     org.springframework.boot.autoconfigure: WARN
     com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver: WARN
     com.seasy.cloud.frontweb.feignclient.UserFeignClient: INFO

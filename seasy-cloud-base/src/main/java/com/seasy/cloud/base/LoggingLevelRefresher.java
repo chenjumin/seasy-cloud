@@ -18,6 +18,9 @@ import com.ctrip.framework.apollo.model.ConfigChangeEvent;
 import com.ctrip.framework.apollo.spring.annotation.ApolloConfig;
 import com.ctrip.framework.apollo.spring.annotation.ApolloConfigChangeListener;
 
+/**
+ * 通过Apollo来动态刷新日志级别
+ */
 public class LoggingLevelRefresher {
 	private final static Logger logger = LoggerFactory.getLogger(LoggingLevelRefresher.class);
 
