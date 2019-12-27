@@ -8,23 +8,16 @@ import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.logging.LogLevel;
 import org.springframework.boot.logging.LoggerConfiguration;
 import org.springframework.boot.logging.LoggingSystem;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.util.StringUtils;
 
 import com.ctrip.framework.apollo.Config;
 import com.ctrip.framework.apollo.model.ConfigChangeEvent;
 import com.ctrip.framework.apollo.spring.annotation.ApolloConfig;
 import com.ctrip.framework.apollo.spring.annotation.ApolloConfigChangeListener;
-import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 
-@Configuration
-@ConditionalOnClass(EnableApolloConfig.class)
-@ConditionalOnProperty(prefix="apollo.logging.level.refresh", value="enabled", havingValue="true")
 public class LoggingLevelRefresher {
 	private final static Logger logger = LoggerFactory.getLogger(LoggingLevelRefresher.class);
 

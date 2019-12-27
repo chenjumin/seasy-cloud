@@ -11,15 +11,6 @@ spring:
   profiles:
     active:
     - ${profiles_active:dev}
-
-#apollo
-app:
-  id: ${spring.application.name}
-apollo:
-  meta: ${apollo_meta}
-  bootstrap:
-    enable: true
-    namespaces: application
  
 logging:
   config: config/logback.xml
