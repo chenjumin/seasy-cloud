@@ -1,1 +1,1 @@
-mvn clean assembly:assembly &pause
+mvn clean assembly:assembly -Ddockerfile.tag.skip &pause

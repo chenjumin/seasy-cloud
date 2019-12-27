@@ -18,6 +18,7 @@ ENV profiles_active=$profiles_active
 ENV eureka_security_uid=$eureka_security_uid
 ENV eureka_security_pwd=$eureka_security_pwd
 ENV apollo_meta=$apollo_meta
+ENV apollo_env=$apollo_env
 
 EXPOSE 4002
-CMD java -javaagent:/opt/seasy/seasy-cloud-frontweb/agent/skywalking-agent.jar -Denv=$apollo_env -Dskywalking.agent.service_name=frontweb -Dskywalking.collector.backend_service=oap:11800 -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=utf-8 -jar seasy-cloud-frontweb.jar
+CMD java -Denv=${apollo_env} -javaagent:/opt/seasy/seasy-cloud-frontweb/agent/skywalking-agent.jar -Dskywalking.agent.service_name=frontweb -Dskywalking.collector.backend_service=oap:11800 -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=utf-8 -jar seasy-cloud-frontweb.jar
