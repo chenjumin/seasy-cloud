@@ -7,7 +7,7 @@ ARG profiles_active
 ARG eureka_security_uid
 ARG eureka_security_pwd
 ARG apollo_meta
-ARG apollo_env
+ARG apollo_env=dev
 
 WORKDIR /opt/seasy/seasy-cloud-userservice
 COPY target/seasy-cloud-userservice/seasy-cloud-userservice .
@@ -20,4 +20,4 @@ ENV eureka_security_pwd=$eureka_security_pwd
 ENV apollo_meta=$apollo_meta
 
 EXPOSE 4001
-CMD java -Denv=$apollo_env -javaagent:/opt/seasy/seasy-cloud-userservice/agent/skywalking-agent.jar -Dskywalking.agent.service_name=userservice -Dskywalking.collector.backend_service=oap:11800 -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=utf-8 -jar seasy-cloud-userservice.jar
+CMD java -javaagent:/opt/seasy/seasy-cloud-userservice/agent/skywalking-agent.jar -Denv=$apollo_env -Dskywalking.agent.service_name=userservice -Dskywalking.collector.backend_service=oap:11800 -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=utf-8 -jar seasy-cloud-userservice.jar

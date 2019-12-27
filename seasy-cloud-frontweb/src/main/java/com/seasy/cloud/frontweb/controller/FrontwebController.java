@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ctrip.framework.apollo.Config;
+import com.ctrip.framework.apollo.spring.annotation.ApolloConfig;
 import com.seasy.cloud.base.Address;
 import com.seasy.cloud.base.User;
 import com.seasy.cloud.frontweb.feignclient.UserFeignClient;
@@ -22,6 +24,9 @@ public class FrontwebController {
 	
 	@Autowired
     UserFeignClient userFeignClient;
+	
+	@ApolloConfig
+	private Config config;
 
 	@GetMapping("/user/{id}")
 	public String getUser(@PathVariable(value="id") Long id){

@@ -12,6 +12,15 @@ spring:
     active:
     - ${profiles_active:dev}
 
+#apollo
+app:
+  id: ${spring.application.name}
+apollo:
+  meta: ${apollo_meta}
+  bootstrap:
+    enable: true
+    namespaces: application
+
 #Feign的配置信息
 feign:
   client:

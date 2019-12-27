@@ -23,7 +23,7 @@ public class UserController {
 	private Config config;
 	@Value("${userservice-key1:}")
 	private String key1;
-	
+		
 	@GetMapping("/user/{id}")
 	public String get(@PathVariable(value="id") Long id){
 		return  getPrefix() + id;

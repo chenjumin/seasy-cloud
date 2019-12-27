@@ -24,7 +24,6 @@ apollo:
 logging:
   config: config/logback.xml
   level:
-    root: INFO
     org.springframework.boot.autoconfigure: WARN
    
 #开启所有的管理端点给Admin Server进行监控

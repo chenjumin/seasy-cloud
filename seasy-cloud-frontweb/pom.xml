@@ -46,6 +46,12 @@
     	<groupId>org.springframework.cloud</groupId>
     	<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
 	</dependency>
+	
+	<!-- Apollo -->
+	<dependency>
+		<groupId>com.ctrip.framework.apollo</groupId>
+		<artifactId>apollo-client</artifactId>
+	</dependency>
   </dependencies>
   
   <build>
@@ -123,6 +129,8 @@
 						<profiles_active>${profiles_active}</profiles_active>
 						<eureka_security_uid>${eureka_security_uid}</eureka_security_uid>
 						<eureka_security_pwd>${eureka_security_pwd}</eureka_security_pwd>
+						<apollo_meta>${apollo_meta}</apollo_meta>
+						<apollo_env>${apollo_env}</apollo_env>
 					</buildArgs>
 				</configuration>
 			</plugin>
