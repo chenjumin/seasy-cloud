@@ -42,11 +42,11 @@ chmod 777 build.sh
 ./build.sh
 
 docker push 192.168.134.142/seasy/apollo-adminservice:1.5.1
-!
 
 cd /opt/projects/seasy-cloud/seasy-cloud-config-apollo/apollo-portal
 chmod 777 build.sh
 ./build.sh
 
 docker push 192.168.134.142/seasy/apollo-portal:1.5.1
+!
 
