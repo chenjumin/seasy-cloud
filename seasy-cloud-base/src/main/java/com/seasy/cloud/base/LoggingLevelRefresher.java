@@ -26,7 +26,7 @@ import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 @ConditionalOnClass(EnableApolloConfig.class)
 @ConditionalOnProperty(prefix="apollo.logging.level.refresh", value="enabled", havingValue="true")
 public class LoggingLevelRefresher {
-	private final static Logger log = LoggerFactory.getLogger(LoggingLevelRefresher.class);
+	private final static Logger logger = LoggerFactory.getLogger(LoggingLevelRefresher.class);
 
     private static final String PREFIX = "logging.level.";
     private static final String ROOT = LoggingSystem.ROOT_LOGGER_NAME;
@@ -40,11 +40,13 @@ public class LoggingLevelRefresher {
 
     @PostConstruct
     private void init() {
+    	logger.info("init LoggingLevelRefresher...");
         refreshLoggingLevels(config.getPropertyNames());
     }
 
     @ApolloConfigChangeListener(interestedKeyPrefixes = PREFIX)
     private void onChange(ConfigChangeEvent changeEvent) {
+    	logger.info("LoggingLevelRefresher.onChange: " + changeEvent.getNamespace() + ", " + changeEvent.changedKeys());
         refreshLoggingLevels(changeEvent.changedKeys());
     }
 
@@ -69,11 +71,11 @@ public class LoggingLevelRefresher {
 
     private void log(String loggerName, String strLevel) {
         try {
-            LoggerConfiguration loggerConfiguration = loggingSystem.getLoggerConfiguration(log.getName());
-            Method method = log.getClass().getMethod(loggerConfiguration.getEffectiveLevel().name().toLowerCase(), String.class, Object.class, Object.class);
-            method.invoke(log, "changed {} log level to:{}", loggerName, strLevel);
+            LoggerConfiguration loggerConfiguration = loggingSystem.getLoggerConfiguration(logger.getName());
+            Method method = logger.getClass().getMethod(loggerConfiguration.getEffectiveLevel().name().toLowerCase(), String.class, Object.class, Object.class);
+            method.invoke(logger, "changed {} log level to:{}", loggerName, strLevel);
         } catch (Exception e) {
-            log.error("changed {} log level to:{} error", loggerName, strLevel, e);
+        	logger.error("changed {} log level to:{} error", loggerName, strLevel, e);
         }
     }
 }
