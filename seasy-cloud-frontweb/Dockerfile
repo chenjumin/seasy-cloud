@@ -21,4 +21,4 @@ ENV apollo_meta=$apollo_meta
 ENV apollo_env=$apollo_env
 
 EXPOSE 4002
-CMD ["sh", "-c", "java -Denv=$apollo_env a=${apollo_env} b=$apollo_env -javaagent:/opt/seasy/seasy-cloud-frontweb/agent/skywalking-agent.jar -Dskywalking.agent.service_name=frontweb -Dskywalking.collector.backend_service=oap:11800 -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=utf-8 -jar seasy-cloud-frontweb.jar"]
+CMD ["sh", "-c", "java -Denv=$apollo_env -Da=${apollo_env} -Db=$apollo_env -javaagent:/opt/seasy/seasy-cloud-frontweb/agent/skywalking-agent.jar -Dskywalking.agent.service_name=frontweb -Dskywalking.collector.backend_service=oap:11800 -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=utf-8 -jar seasy-cloud-frontweb.jar"]
