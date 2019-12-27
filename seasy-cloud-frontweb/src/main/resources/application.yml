@@ -20,7 +20,10 @@ apollo:
   bootstrap:
     enable: true
     namespaces: application
-
+  logging:
+    level:
+      refresh: true
+      
 #Feign的配置信息
 feign:
   client:
