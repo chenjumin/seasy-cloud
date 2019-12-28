@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   zipkin:
-    image: openzipkin/zipkin:2.19
+    image: 192.168.134.142/common/openzipkin/zipkin:2.19
     networks:
       - seasy_overlay
     #network_mode: host
