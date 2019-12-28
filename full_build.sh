@@ -37,6 +37,12 @@ chmod 777 build.sh
 ./build.sh
 
 docker push 192.168.134.142/seasy/seasy-cloud-frontweb:0.0.1-SNAPSHOT
+
+cd /opt/projects/seasy-cloud/seasy-cloud-gateway
+chmod 777 build.sh
+./build.sh
+
+docker push 192.168.134.142/seasy/seasy-cloud-gateway:0.0.1-SNAPSHOT
 !
 
 :<<!

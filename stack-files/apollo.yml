@@ -1,12 +1,14 @@
 version: "3.7"
 
 services:
-  adminserver:
-    image: 192.168.134.142/seasy/seasy-cloud-adminserver:0.0.1-SNAPSHOT
+  apollo-adminservice:
+    image: 192.168.134.142/seasy/apollo-adminservice:1.5.1
     networks:
       - seasy_overlay
     ports:
-      - "3100:3100"
+      - "3202:3202"
+    volumes:
+      - apollo-adminservice-log:/opt/logs
     deploy:
       mode: replicated
       replicas: 1
@@ -15,49 +17,19 @@ services:
           - node.role == manager
       restart_policy:
         condition: on-failure
-        delay: 5s
+        delay: 15s
         max_attempts: 3
         window: 120s
-  userservice:
-    image: 192.168.134.142/seasy/seasy-cloud-userservice:0.0.1-SNAPSHOT
+  apollo-configservice:
+    image: 192.168.134.142/seasy/apollo-configservice:1.5.1
     networks:
       - seasy_overlay
     ports:
-      - "4001:4001"
-    deploy:
-      mode: replicated
-      replicas: 2
-      placement:
-        constraints:
-          - node.role == worker
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-  frontweb:
-    image: 192.168.134.142/seasy/seasy-cloud-frontweb:0.0.1-SNAPSHOT
-    networks:
-      - seasy_overlay
-    ports:
-      - "4002:4002"
-    deploy:
-      mode: replicated
-      replicas: 1
-      placement:
-        constraints:
-          - node.role == worker
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-  gateway:
-    image: 192.168.134.142/seasy/seasy-cloud-gateway:0.0.1-SNAPSHOT
-    networks:
-      - seasy_overlay
-    ports:
-      - "3301:3301"
+      - "3201:3201"
+    volumes:
+      - apollo-configservice-log:/opt/logs
+    depends_on:
+      - apollo-adminservice
     deploy:
       mode: replicated
       replicas: 1
@@ -66,10 +38,36 @@ services:
           - node.role == manager
       restart_policy:
         condition: on-failure
-        delay: 5s
+        delay: 15s
+        max_attempts: 3
+        window: 120s
+  apollo-portal:
+    image: 192.168.134.142/seasy/apollo-portal:1.5.1
+    networks:
+      - seasy_overlay
+    ports:
+      - "3203:3203"
+    volumes:
+      - apollo-portal-log:/opt/logs
+    depends_on:
+      - apollo-adminservice
+      - apollo-configservice
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+        delay: 15s
         max_attempts: 3
         window: 120s
 networks:
   seasy_overlay:
     external: true
     name: seasy_overlay
+volumes:
+  apollo-adminservice-log:
+  apollo-configservice-log:
+  apollo-portal-log:
