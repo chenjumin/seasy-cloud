@@ -11,6 +11,9 @@ spring:
 
 server:
   port: 3203
+  servlet:
+    session:
+      timeout: 30m
   compression:
     enabled: true
   tomcat:

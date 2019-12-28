@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>seasy-cloud-gateway</artifactId>
+  <packaging>jar</packaging>
+  <parent>
+    <groupId>com.seasy.cloud</groupId>
+    <artifactId>seasy-cloud</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <dependencies>
+    <dependency>
+    	<groupId>com.seasy.cloud</groupId>
+  		<artifactId>seasy-cloud-base</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    <dependency>
+	    <groupId>org.springframework.boot</groupId>
+	    <artifactId>spring-boot-starter-webflux</artifactId>
+	</dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-gateway</artifactId>
+    </dependency>
+    <dependency>
+	    <groupId>org.springframework.cloud</groupId>
+	    <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+	</dependency>
+	
+	<!-- redis -->
+	<dependency>
+    	<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter-data-redis</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+	</dependency>
+	<dependency>
+    	<groupId>org.apache.commons</groupId>
+    	<artifactId>commons-pool2</artifactId>
+	</dependency>
+    
+    <!-- jwt -->
+    <dependency>
+    	<groupId>com.auth0</groupId>
+    	<artifactId>java-jwt</artifactId>
+    	<version>3.7.0</version>
+	</dependency>
+	<dependency>
+		<groupId>commons-codec</groupId>
+		<artifactId>commons-codec</artifactId>
+	</dependency>
+    
+    <dependency>
+	    <groupId>net.sf.json-lib</groupId>
+	    <artifactId>json-lib</artifactId>
+	    <version>2.4</version>
+  		<classifier>jdk15</classifier>
+	</dependency>
+	<dependency>
+  		<groupId>net.sf.ezmorph</groupId>
+  		<artifactId>ezmorph</artifactId>
+  		<version>1.0.6</version>
+	</dependency>
+	<dependency>
+    	<groupId>commons-beanutils</groupId>
+    	<artifactId>commons-beanutils</artifactId>
+  		<version>1.8.0</version>
+	</dependency>
+  </dependencies>
+  
+  <build>
+      <finalName>${project.artifactId}</finalName>
+    
+      <plugins>
+	      	<plugin>
+		        <groupId>org.codehaus.mojo</groupId>
+		        <artifactId>properties-maven-plugin</artifactId>
+		        <version>1.0.0</version>
+		        <executions>
+		          	<execution>
+			            <phase>initialize</phase>
+			            <goals>
+			              	<goal>read-project-properties</goal>
+			            </goals>
+			            <configuration>
+			              	<files>
+			                	<file>../build.properties</file>
+			              	</files>
+			            </configuration>
+		          	</execution>
+		        </executions>
+	      	</plugin>
+            
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+	       	<plugin>  
+	           	<groupId>org.apache.maven.plugins</groupId>  
+	           	<artifactId>maven-assembly-plugin</artifactId>
+	           	<version>2.6</version>
+	           	<configuration>
+	           		<appendAssemblyId>false</appendAssemblyId>
+	               	<descriptors>  
+	                   	<descriptor>src/main/assembly/package.xml</descriptor>  
+	               	</descriptors>  
+	           	</configuration>  
+	           	<executions>  
+	                <execution>  
+	                    <id>make-assembly</id>  
+	                    <phase>package</phase>  
+	                    <goals>  
+	                        <goal>single</goal>  
+	                    </goals>
+	                </execution>
+	           	</executions>
+	       	</plugin>
+
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.10</version>
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<!--如果package时不想用docker打包,就注释掉这个goal-->
+							<goal>build</goal>
+							<!-- <goal>push</goal> -->
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<contextDirectory>${project.basedir}</contextDirectory>
+					<dockerfile>Dockerfile</dockerfile>
+					<repository>${docker.image.prefix}/${project.artifactId}</repository>
+					<tag>${project.version}</tag> <!-- 不指定tag默认为latest -->
+					<buildArgs>
+						<!-- 提供参数向Dockerfile传递，在Dockerfile中需要用ARG定义该参数 -->
+						<eureka_server_address>${eureka_server_address}</eureka_server_address>
+						<preferred_networks>${preferred_networks}</preferred_networks>
+						<profiles_active>${profiles_active}</profiles_active>
+						<eureka_security_uid>${eureka_security_uid}</eureka_security_uid>
+						<eureka_security_pwd>${eureka_security_pwd}</eureka_security_pwd>
+					</buildArgs>
+				</configuration>
+			</plugin>
+      </plugins>
+  </build>
+</project>

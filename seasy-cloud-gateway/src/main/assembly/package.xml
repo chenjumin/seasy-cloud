@@ -1,0 +1,44 @@
+<assembly>
+    <id>release</id> 
+     
+    <!-- format: tar.gz，zip, dir -->   
+    <formats>
+        <format>dir</format>  
+    </formats>
+    
+    <fileSets>
+        <fileSet>  
+            <directory>src/main/resources</directory>  
+            <includes>
+                <include>*.yml</include>
+            </includes>   
+            <outputDirectory>/config</outputDirectory> 
+        </fileSet>
+        
+        <fileSet>  
+            <directory>config</directory>    
+            <includes>  
+                <include>logback.xml</include>
+            </includes> 
+            <outputDirectory>/config</outputDirectory>  
+        </fileSet>
+        
+        <fileSet>  
+            <directory>../skywalking/agent</directory>    
+            <includes>  
+                <include>**/*.jar</include>
+                <include>**/*.config</include>
+            </includes> 
+            <outputDirectory>/agent</outputDirectory>  
+        </fileSet>
+        
+        <fileSet>  
+            <directory>target</directory>    
+            <includes>  
+                <include>seasy-cloud-gateway.jar</include>
+            </includes> 
+			<fileMode>0777</fileMode>
+            <outputDirectory>/</outputDirectory>  
+        </fileSet>
+    </fileSets>  
+</assembly>
