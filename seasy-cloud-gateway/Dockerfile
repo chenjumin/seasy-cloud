@@ -1,6 +1,8 @@
 FROM openjdk:8-jre
 MAINTAINER seasy@163.com
 
+ENV REFRESH_DATE 2019-01-01
+
 ARG eureka_server_address
 ARG preferred_networks
 ARG profiles_active
