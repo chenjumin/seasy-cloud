@@ -3,7 +3,7 @@ version: "3.7"
 services:
   #elasticsearch服务
   esserver:
-    image: 192.168.134.142/common/elasticsearch:6.4.3
+    image: 192.168.134.147/common/elasticsearch:6.4.3
     networks:
       - seasy_overlay
     ports:
@@ -34,7 +34,7 @@ services:
         window: 120s
   #skywalking-oap服务
   oap:
-    image: 192.168.134.142/common/apache/skywalking-oap-server:6.5.0
+    image: 192.168.134.147/common/apache/skywalking-oap-server:6.5.0
     networks:
       - seasy_overlay
     depends_on:
@@ -61,7 +61,7 @@ services:
         window: 120s
   #skywalking-ui服务
   skywalking-ui:
-    image: 192.168.134.142/common/apache/skywalking-ui:6.5.0
+    image: 192.168.134.147/common/apache/skywalking-ui:6.5.0
     networks:
       - seasy_overlay
     depends_on:

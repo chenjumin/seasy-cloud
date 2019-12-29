@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   apollo-adminservice:
-    image: 192.168.134.142/seasy/apollo-adminservice:1.5.1
+    image: 192.168.134.147/seasy/apollo-adminservice:1.5.1
     networks:
       - seasy_overlay
     ports:
@@ -21,7 +21,7 @@ services:
         max_attempts: 3
         window: 120s
   apollo-configservice:
-    image: 192.168.134.142/seasy/apollo-configservice:1.5.1
+    image: 192.168.134.147/seasy/apollo-configservice:1.5.1
     networks:
       - seasy_overlay
     ports:
@@ -42,7 +42,7 @@ services:
         max_attempts: 3
         window: 120s
   apollo-portal:
-    image: 192.168.134.142/seasy/apollo-portal:1.5.1
+    image: 192.168.134.147/seasy/apollo-portal:1.5.1
     networks:
       - seasy_overlay
     ports:

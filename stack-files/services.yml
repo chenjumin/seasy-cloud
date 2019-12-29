@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   adminserver:
-    image: 192.168.134.142/seasy/seasy-cloud-adminserver:0.0.1-SNAPSHOT
+    image: 192.168.134.147/seasy/seasy-cloud-adminserver:0.0.1-SNAPSHOT
     networks:
       - seasy_overlay
     ports:
@@ -19,7 +19,7 @@ services:
         max_attempts: 3
         window: 120s
   userservice:
-    image: 192.168.134.142/seasy/seasy-cloud-userservice:0.0.1-SNAPSHOT
+    image: 192.168.134.147/seasy/seasy-cloud-userservice:0.0.1-SNAPSHOT
     networks:
       - seasy_overlay
     ports:
@@ -36,7 +36,7 @@ services:
         max_attempts: 3
         window: 120s
   frontweb:
-    image: 192.168.134.142/seasy/seasy-cloud-frontweb:0.0.1-SNAPSHOT
+    image: 192.168.134.147/seasy/seasy-cloud-frontweb:0.0.1-SNAPSHOT
     networks:
       - seasy_overlay
     ports:
@@ -53,7 +53,7 @@ services:
         max_attempts: 3
         window: 120s
   gateway:
-    image: 192.168.134.142/seasy/seasy-cloud-gateway:0.0.1-SNAPSHOT
+    image: 192.168.134.147/seasy/seasy-cloud-gateway:0.0.1-SNAPSHOT
     networks:
       - seasy_overlay
     ports:

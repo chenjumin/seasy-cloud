@@ -3,7 +3,7 @@ version: "3.7"
 services:
   #mysql
   mysql:
-    image: 192.168.134.142/common/mysql:5.7.28
+    image: 192.168.134.147/common/mysql:5.7.28
     networks:
       - seasy_overlay
     ports:
@@ -21,7 +21,7 @@ services:
       placement:
         constraints:
           #manager or worker
-          - node.role == worker
+          - node.role == manager
       restart_policy:
         condition: on-failure
         delay: 5s
