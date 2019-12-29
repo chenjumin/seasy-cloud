@@ -16,5 +16,5 @@ ENV profiles_active=$profiles_active
 ENV eureka_security_uid=$eureka_security_uid
 ENV eureka_security_pwd=$eureka_security_pwd
 
-EXPOSE 4001
+EXPOSE 3301
 CMD java -javaagent:/opt/seasy/seasy-cloud-gateway/agent/skywalking-agent.jar -Dskywalking.agent.service_name=gateway -Dskywalking.collector.backend_service=oap:11800 -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=utf-8 -jar seasy-cloud-gateway.jar
