@@ -1,5 +1,6 @@
 package com.seasy.cloud.userservice;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -13,6 +14,9 @@ import com.seasy.cloud.base.web.DefaultWebMvcConfig;
 @EnableEurekaClient
 @SpringBootApplication
 public class Main {
+	@Value("${spring.application.name}")
+	private String appname;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Main.class, args);
 	}
@@ -24,6 +28,6 @@ public class Main {
 	
 	@GetMapping("/index")
 	public String index(){
-		return "seasy-cloud-userservice";
+		return appname;
 	}
 }
