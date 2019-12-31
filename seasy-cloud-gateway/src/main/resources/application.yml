@@ -25,6 +25,11 @@ spring:
           args:
             name: hystrixCommand
             fallbackUri: forward:/hystrixCommandFallback
+      routes:  
+        - id: index
+          predicates:  
+            - Path=/
+          uri: /index 
  
 logging:
   config: config/logback.xml
