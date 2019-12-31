@@ -1,37 +1,19 @@
 package com.seasy.cloud.gateway;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;
-import com.seasy.cloud.base.web.DefaultWebMvcConfig;
 import com.seasy.cloud.gateway.filter.Custom1GatewayFilterFactory;
 
-@RestController
 @EnableEurekaClient
 @SpringBootApplication
 public class Main {
-	@Value("${spring.application.name}")
-	private String appname;
-	
 	public static void main(String[] args) {
 		SpringApplication.run(Main.class, args);
-	}	
-	
-	@Bean
-	public DefaultWebMvcConfig getDefaultWebMvcConfig(){
-		return new DefaultWebMvcConfig();
-	}
-	
-	@GetMapping("/index")
-	public String index(){
-		return appname;
 	}
 	
 	/**
