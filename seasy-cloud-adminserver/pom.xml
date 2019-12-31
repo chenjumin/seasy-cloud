@@ -12,6 +12,12 @@
   </parent>
   
   <dependencies>
+    <dependency>
+    	<groupId>com.seasy.cloud</groupId>
+  		<artifactId>seasy-cloud-base</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    
   	<dependency>
     	<groupId>de.codecentric</groupId>
     	<artifactId>spring-boot-admin-starter-server</artifactId>

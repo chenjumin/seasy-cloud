@@ -3,11 +3,14 @@ package com.seasy.cloud.adminserver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+
+import com.seasy.cloud.base.web.DefaultWebMvcConfig;
 
 import de.codecentric.boot.admin.server.config.AdminServerProperties;
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
@@ -18,6 +21,11 @@ import de.codecentric.boot.admin.server.config.EnableAdminServer;
 public class Main {
 	public static void main(String[] args) {
 		SpringApplication.run(Main.class, args);
+	}
+	
+	@Bean
+	public DefaultWebMvcConfig getDefaultWebMvcConfig(){
+		return new DefaultWebMvcConfig();
 	}
 	
 	/**
