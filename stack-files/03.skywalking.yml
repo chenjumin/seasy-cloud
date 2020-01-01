@@ -18,6 +18,8 @@ services:
       - http.cors.enabled=true
       - http.cors.allow-origin=*
       - TZ=Asia/Shanghai
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m -Xss256k
+      - bootstrap.memory_lock=true
     volumes:
       - es-data:/usr/share/elasticsearch/data:rw
       - es-logs:/usr/share/elasticsearch/logs:rw
