@@ -24,7 +24,7 @@
         </fileSet>
         
         <fileSet>  
-            <directory>../skywalking/agent</directory>    
+            <directory>../skywalking/${skywalking.agent.rootdir}</directory>    
             <includes>  
                 <include>**/*.jar</include>
                 <include>**/*.config</include>
