@@ -3,7 +3,7 @@ version: "3.7"
 services:
   #skywalking-oap服务
   oap:
-    image: 192.168.134.147/common/apache/skywalking-oap-server:6.3.0
+    image: 192.168.134.147/common/apache/skywalking-oap-server:6.5.0
     networks:
       - seasy_overlay
     #depends_on:
@@ -21,17 +21,17 @@ services:
       - SW_STORAGE=mysql
       - SW_STORAGE_MYSQL_QUERY_MAX_SIZE=5000
       #skywalking-apm-6.5.0版本开始用到的配置
-      #- SW_JDBC_URL=jdbc:mysql://192.168.134.142:3306/skywalking?characterEncoding=utf8&useSSL=false
-      #- SW_DATA_SOURCE_USER=root
-      #- SW_DATA_SOURCE_PASSWORD=123456
-      #- SW_DATA_SOURCE_CACHE_PREP_STMTS=true
-      #- SW_DATA_SOURCE_PREP_STMT_CACHE_SQL_SIZE=250
-      #- SW_DATA_SOURCE_PREP_STMT_CACHE_SQL_LIMIT=2048
-      #- SW_DATA_SOURCE_USE_SERVER_PREP_STMTS=true
+      - SW_JDBC_URL=jdbc:mysql://192.168.134.142:3306/skywalking?characterEncoding=utf8&useSSL=false
+      - SW_DATA_SOURCE_USER=root
+      - SW_DATA_SOURCE_PASSWORD=123456
+      - SW_DATA_SOURCE_CACHE_PREP_STMTS=true
+      - SW_DATA_SOURCE_PREP_STMT_CACHE_SQL_SIZE=250
+      - SW_DATA_SOURCE_PREP_STMT_CACHE_SQL_LIMIT=2048
+      - SW_DATA_SOURCE_USE_SERVER_PREP_STMTS=true
     volumes:
       - /opt/mysql-connector-java-5.1.48.jar:/skywalking/oap-libs/mysql-connector-java-5.1.48.jar
       #skywalking-apm-6.4.0及之前的版本用到的配置
-      - /opt/datasource-settings.properties:/skywalking/config/datasource-settings.properties
+      #- /opt/datasource-settings.properties:/skywalking/config/datasource-settings.properties
     deploy:
       mode: replicated
       replicas: 1
@@ -45,7 +45,7 @@ services:
         window: 120s
   #skywalking-ui服务
   skywalking-ui:
-    image: 192.168.134.147/common/apache/skywalking-ui:6.3.0
+    image: 192.168.134.147/common/apache/skywalking-ui:6.5.0
     networks:
       - seasy_overlay
     depends_on:
