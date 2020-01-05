@@ -20,6 +20,9 @@ import com.ctrip.framework.apollo.spring.annotation.ApolloConfigChangeListener;
 
 /**
  * 通过Apollo来动态刷新日志级别
+ * 
+ * SpringBoot提供了抽象日志系统(org.springframework.boot.logging.LoggingSystem)，
+ * 通过借助LoggingSystem可以实现修改日志级别的目的，而Apollo则为动态修改提供了可能性。
  */
 public class LoggingLevelRefresher {
 	private final static Logger logger = LoggerFactory.getLogger(LoggingLevelRefresher.class);

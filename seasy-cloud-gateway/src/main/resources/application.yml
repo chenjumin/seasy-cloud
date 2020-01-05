@@ -41,7 +41,7 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
-
+      
 ---
 spring:
   profiles: dev
