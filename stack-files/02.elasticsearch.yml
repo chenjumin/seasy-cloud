@@ -1,0 +1,44 @@
+version: "3.7"
+
+services:
+  esserver:
+    image: 192.168.134.147/common/elasticsearch:6.4.3
+    networks:
+      - seasy_overlay
+    ports:
+      #9200为http协议，用于外部通讯
+      #9300位tcp协议，集群节点之间通讯
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - cluster.name=es-cluster
+      - node.name=es-node1
+      - discovery.type=single-node
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - TZ=Asia/Shanghai
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m -Xss256k
+      - bootstrap.memory_lock=true
+    volumes:
+      - es-data:/usr/share/elasticsearch/data:rw
+      - es-logs:/usr/share/elasticsearch/logs:rw
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+networks:
+  seasy_overlay:
+    external: true
+    name: seasy_overlay
+volumes:
+  es-data:
+    driver: local
+  es-logs:
+    driver: local
