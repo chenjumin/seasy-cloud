@@ -51,7 +51,9 @@ spring:
         dashboard: sentinel-dashboard:8858
         #启动一个 Http Server，与 Sentinel 控制台做交互
         port: 8719
-      
+      filter:
+        enabled: false
+        
 logging:
   config: config/logback.xml
   level:
