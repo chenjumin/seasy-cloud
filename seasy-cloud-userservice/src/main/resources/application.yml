@@ -11,7 +11,17 @@ spring:
   profiles:
     active:
     - ${profiles_active:dev}
- 
+  sleuth:
+    enabled: true
+    sampler:
+      probability: 1.0
+    hystrix:
+      strategy:
+        enabled: true
+   zipkin:
+     enabled: true
+     base-url: http://zipkin:9411
+     
 logging:
   config: config/logback.xml
   level:

@@ -9,6 +9,8 @@ services:
       - "3202:3202"
     volumes:
       - apollo-adminservice-log:/opt/logs
+    environment:
+      - TZ=Asia/Shanghai
     deploy:
       mode: replicated
       replicas: 1
@@ -28,6 +30,8 @@ services:
       - "3201:3201"
     volumes:
       - apollo-configservice-log:/opt/logs
+    environment:
+      - TZ=Asia/Shanghai
     depends_on:
       - apollo-adminservice
     deploy:
@@ -49,6 +53,8 @@ services:
       - "3203:3203"
     volumes:
       - apollo-portal-log:/opt/logs
+    environment:
+      - TZ=Asia/Shanghai
     depends_on:
       - apollo-adminservice
       - apollo-configservice

@@ -10,23 +10,16 @@ services:
       - 9411:9411
     environment:
       #mem，mysql， elasticsearch
-      - STORAGE_TYPE=mem
-      - JAVA_OPTS=-Xms256m -Xmx256m -Dlogging.level.zipkin2=DEBUG
+      - STORAGE_TYPE=mysql
+      - JAVA_OPTS=-Xms256m -Xmx256m -Dlogging.level.zipkin=DEBUG -Dlogging.level.zipkin2=DEBUG
       - TZ=Asia/Shanghai
       #MYSQL，需要5.6或者5.7
-      #- MYSQL_DB=zipkin
-      #- MYSQL_USER=root
-      #- MYSQL_PASS=root
-      #- MYSQL_HOST=192.168.47.150
-      #- MYSQL_TCP_PORT=3306
-      #- MYSQL_MAX_CONNECTIONS=100
-      #elasticsearch
-      #- ES_HOSTS=192.168.113.168:9200
-      #RABBIT
-      #- RABBIT_ADDRESSES=192.168.47.150:5672
-      #- RABBIT_USER=admin
-      #- RABBIT_PASSWORD=admin
-      #- RABBIT_QUEUE=zipkin
+      - MYSQL_DB=zipkin
+      - MYSQL_USER=root
+      - MYSQL_PASS=123456
+      - MYSQL_HOST=192.168.134.142
+      - MYSQL_TCP_PORT=3306
+      - MYSQL_MAX_CONNECTIONS=100
     deploy:
       mode: replicated
       replicas: 1

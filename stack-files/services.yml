@@ -7,6 +7,8 @@ services:
       - seasy_overlay
     ports:
       - "3100:3100"
+    environment:
+      - TZ=Asia/Shanghai
     deploy:
       mode: replicated
       replicas: 1
@@ -24,6 +26,8 @@ services:
       - seasy_overlay
     ports:
       - "4001:4001"
+    environment:
+      - TZ=Asia/Shanghai
     deploy:
       mode: replicated
       replicas: 2
@@ -41,23 +45,8 @@ services:
       - seasy_overlay
     ports:
       - "4002:4002"
-    deploy:
-      mode: replicated
-      replicas: 1
-      placement:
-        constraints:
-          - node.role == worker
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
-  gateway:
-    image: 192.168.134.147/seasy/seasy-cloud-gateway:0.0.1-SNAPSHOT
-    networks:
-      - seasy_overlay
-    ports:
-      - "3301:3301"
+    environment:
+      - TZ=Asia/Shanghai
     deploy:
       mode: replicated
       replicas: 1
