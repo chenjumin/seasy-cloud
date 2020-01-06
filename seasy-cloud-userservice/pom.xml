@@ -27,6 +27,7 @@
         <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     
+    <!-- zipkin -->
     <dependency>  
 	    <groupId>org.springframework.cloud</groupId>  
 	    <artifactId>spring-cloud-starter-zipkin</artifactId>  
