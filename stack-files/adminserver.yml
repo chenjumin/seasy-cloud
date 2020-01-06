@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  adminserver:
+    image: 192.168.134.147/seasy/seasy-cloud-adminserver:0.0.1-SNAPSHOT
+    networks:
+      - seasy_overlay
+    ports:
+      - "3100:3100"
+    environment:
+      - TZ=Asia/Shanghai
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == worker
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+networks:
+  seasy_overlay:
+    external: true
+    name: seasy_overlay
