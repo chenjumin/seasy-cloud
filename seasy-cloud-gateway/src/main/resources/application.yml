@@ -11,17 +11,6 @@ spring:
   profiles:
     active:
     - ${profiles_active:dev}
-  #zipkin
-  sleuth:
-    enabled: true
-    sampler:
-      probability: 1.0
-    hystrix:
-      strategy:
-        enabled: true
-  zipkin:
-    enabled: true
-    base-url: http://zipkin:9411
   cloud:
     gateway:
       discovery:
@@ -30,26 +19,13 @@ spring:
           enabled: true
           #服务名称小写支持
           lowerCaseServiceId: true
-      default-filters:
-        #熔断器
-        - name: Hystrix
-          args:
-            name: hystrixCommand
-            fallbackUri: forward:/hystrixCommandFallback
-      routes:
-        - id: frontweb
-          predicates:
-            - Path=/frontweb/**
-          uri: lb://seasy-cloud-frontweb
-          filters:
-            - StripPrefix=1
     sentinel:
       enabled: true
       #取消Sentinel控制台懒加载
       eager: true
       transport:
         dashboard: sentinel-dashboard:8858
-        #启动一个 Http Server，与 Sentinel 控制台做交互
+        #启动一个 Http服务，与 Sentinel控制台做交互
         port: 8719
       filter:
         enabled: false

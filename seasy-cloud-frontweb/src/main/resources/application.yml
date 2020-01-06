@@ -11,17 +11,6 @@ spring:
   profiles:
     active:
     - ${profiles_active:dev}
-  #zipkin
-  sleuth:
-    enabled: true
-    sampler:
-      probability: 1.0
-    hystrix:
-      strategy:
-        enabled: true
-  zipkin:
-    enabled: true
-    base-url: http://zipkin:9411
 
 #apollo
 app:

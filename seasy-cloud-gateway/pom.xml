@@ -29,24 +29,6 @@
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-gateway</artifactId>
     </dependency>
-    <dependency>
-	    <groupId>org.springframework.cloud</groupId>
-	    <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-	</dependency>
-	
-	<!-- redis -->
-<!-- 	<dependency> -->
-<!--     	<groupId>org.springframework.boot</groupId> -->
-<!--     	<artifactId>spring-boot-starter-data-redis</artifactId> -->
-<!-- 	</dependency> -->
-<!-- 	<dependency> -->
-<!-- 		<groupId>org.springframework.boot</groupId> -->
-<!-- 		<artifactId>spring-boot-starter-data-redis-reactive</artifactId> -->
-<!-- 	</dependency> -->
-<!-- 	<dependency> -->
-<!--     	<groupId>org.apache.commons</groupId> -->
-<!--     	<artifactId>commons-pool2</artifactId> -->
-<!-- 	</dependency> -->
     
     <!-- jwt -->
     <dependency>
@@ -74,12 +56,6 @@
     	<groupId>commons-beanutils</groupId>
     	<artifactId>commons-beanutils</artifactId>
   		<version>1.8.0</version>
-	</dependency>
-    
-    <!-- zipkin -->
-    <dependency>  
-	    <groupId>org.springframework.cloud</groupId>  
-	    <artifactId>spring-cloud-starter-zipkin</artifactId>  
 	</dependency>
 	
     <!-- sentinel -->
