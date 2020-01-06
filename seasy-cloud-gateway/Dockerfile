@@ -23,4 +23,4 @@ ENV apollo_meta=$apollo_meta
 ENV apollo_env=$apollo_env
 
 EXPOSE 3301
-CMD ["sh", "-c", "java -Denv=$apollo_env -javaagent:/opt/seasy/seasy-cloud-gateway/agent/skywalking-agent.jar -Dskywalking.agent.service_name=gateway -Dskywalking.collector.backend_service=oap:11800 -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=utf-8 -jar seasy-cloud-gateway.jar"]
+CMD ["sh", "-c", "java -Denv=$apollo_env -javaagent:/opt/seasy/seasy-cloud-gateway/agent/skywalking-agent.jar -Dskywalking.agent.service_name=gateway -Dskywalking.collector.backend_service=oap:11800 -Dcsp.sentinel.app.type=1 -Djava.security.egd=file:/dev/./urandom -Dfile.encoding=utf-8 -jar seasy-cloud-gateway.jar"]

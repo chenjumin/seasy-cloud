@@ -45,10 +45,13 @@ spring:
             - StripPrefix=1
     sentinel:
       enabled: true
+      #取消Sentinel控制台懒加载
       eager: true
       transport:
         dashboard: sentinel-dashboard:8858
-        port: 8858
+        #启动一个 Http Server，与 Sentinel 控制台做交互
+        port: 8719
+      
 logging:
   config: config/logback.xml
   level:

@@ -17,7 +17,8 @@ import com.alibaba.csp.sentinel.slots.block.flow.FlowRuleManager;
 @RestController
 public class RulesController {
 	@GetMapping("/api")
-    @SentinelResource("api")
+	//限流埋点
+    @SentinelResource(value="api")
     public Set<ApiDefinition> apiRules() {
         return GatewayApiDefinitionManager.getApiDefinitions();
     }
@@ -32,5 +33,9 @@ public class RulesController {
     @SentinelResource("flow")
     public List<FlowRule> apiFlow() {
         return FlowRuleManager.getRules();
+    }
+    
+    public void blockHandler(){
+    	
     }
 }
