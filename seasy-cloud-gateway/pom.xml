@@ -80,7 +80,19 @@
     <dependency>  
 	    <groupId>org.springframework.cloud</groupId>  
 	    <artifactId>spring-cloud-starter-zipkin</artifactId>  
-	</dependency> 
+	</dependency>
+	
+    <!-- sentinel -->
+	<dependency>
+	    <groupId>com.alibaba.cloud</groupId>
+	    <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+	    <version>2.0.1.RELEASE</version>
+	</dependency>
+	<dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+	    <version>2.0.1.RELEASE</version>
+    </dependency>
   </dependencies>
   
   <build>

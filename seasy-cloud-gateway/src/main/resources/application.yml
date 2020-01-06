@@ -43,7 +43,12 @@ spring:
           uri: lb://seasy-cloud-frontweb
           filters:
             - StripPrefix=1
- 
+    sentinel:
+      enabled: true
+      eager: true
+      transport:
+        dashboard: sentinel-dashboard:8858
+        port: 8858
 logging:
   config: config/logback.xml
   level:
