@@ -18,9 +18,9 @@ spring:
     hystrix:
       strategy:
         enabled: true
-   zipkin:
-     enabled: true
-     base-url: http://zipkin:9411
+    zipkin:
+      enabled: true
+      base-url: http://zipkin:9411
      
 logging:
   config: config/logback.xml
