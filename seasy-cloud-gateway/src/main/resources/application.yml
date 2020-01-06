@@ -24,12 +24,12 @@ spring:
     base-url: http://zipkin:9411
   cloud:
     gateway:
-      #discovery:
-        #locator:
+      discovery:
+        locator:
           #通过服务名路由到具体的服务实例
-          #enabled: true
+          enabled: true
           #服务名称小写支持
-          #lowerCaseServiceId: true
+          lowerCaseServiceId: true
       default-filters:
         #熔断器
         - name: Hystrix
