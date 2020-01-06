@@ -1,4 +1,4 @@
-# seasy-cloud
+# SeasyCloud
 ## 服务注册与发现Eureka  
 ## 统一配置中心Apollo  
 ## 分布式链路跟踪SkyWalking  
@@ -8,5 +8,6 @@
 # 容器化技术  
 ## Docker  
 ## Docker Compose  
-## Docker Swarm  
-## Portainer  
+## 集群管理Docker Swarm  
+## 可视化管理工具Portainer  
+## 私有镜像仓库Harbor  
