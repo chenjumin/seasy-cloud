@@ -30,7 +30,7 @@ spring:
       filter:
         enabled: false
       datasource:
-        ds:
+        flow:
           apollo:
             namespace-name: application
             flow-rules-key: sentinel.flowRules
