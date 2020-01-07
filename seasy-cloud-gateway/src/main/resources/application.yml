@@ -29,11 +29,11 @@ spring:
         port: 8719
       filter:
         enabled: false
-      datasource:
-        ds:
-          apollo:
-            namespace-name: application
-            flow-rules-key: sentinel.flowRules
+      #datasource:
+      #  ds:
+      #    apollo:
+      #      namespace-name: application
+      #      flow-rules-key: sentinel.flowRules
 
 #apollo
 app:
