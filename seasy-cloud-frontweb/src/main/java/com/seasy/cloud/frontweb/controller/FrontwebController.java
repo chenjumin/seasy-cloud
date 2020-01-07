@@ -33,7 +33,7 @@ public class FrontwebController {
 		logger.debug("logger level is debug: id={}", id);
 		logger.warn("logger level is warn: id={}", id);
 		
-		return getPrefix() + " : " + userFeignClient.get(id) + " : " + System.currentTimeMillis();
+		return userFeignClient.get(id) + " : " + System.currentTimeMillis();
 	}
 	
 	@GetMapping("/user/query")
@@ -49,6 +49,11 @@ public class FrontwebController {
 	@GetMapping("/address/list")
 	public List<Address> getAllAddress(){
 		return userFeignClient.getAllAddress();
+	}
+
+	@GetMapping("/testApollo")
+	public String testApollo(){
+		return getPrefix() + " : test apollo!";
 	}
 	
 	private String getPrefix(){

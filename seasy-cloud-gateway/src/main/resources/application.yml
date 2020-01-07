@@ -29,6 +29,20 @@ spring:
         port: 8719
       filter:
         enabled: false
+      datasource:
+        ds:
+          apollo:
+            namespace-name: application
+            flow-rules-key: sentinel.flowRules
+
+#apollo
+app:
+  id: ${spring.application.name}
+apollo:
+  meta: ${apollo_meta}
+  bootstrap:
+    enable: true
+    namespaces: application
         
 logging:
   config: config/logback.xml

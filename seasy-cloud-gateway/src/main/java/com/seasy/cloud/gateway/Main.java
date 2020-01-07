@@ -5,11 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 
+import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RandomRule;
 import com.seasy.cloud.gateway.filter.Custom1GatewayFilterFactory;
 
 @EnableEurekaClient
+@EnableApolloConfig
 @SpringBootApplication
 public class Main {
 	public static void main(String[] args) {
