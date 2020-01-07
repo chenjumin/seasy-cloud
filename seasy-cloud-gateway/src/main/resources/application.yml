@@ -32,8 +32,8 @@ spring:
       datasource:
         flow:
           apollo:
-            namespace-name: application
-            flow-rules-key: sentinel.flowRules
+            namespaceName: application
+            flowRulesKey: sentinel.flowRules
 
 #apollo
 app:
