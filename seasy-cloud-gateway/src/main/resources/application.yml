@@ -29,11 +29,6 @@ spring:
         port: 8719
       filter:
         enabled: false
-      datasource:
-        flow:
-          apollo:
-            namespaceName: application
-            flowRulesKey: sentinel.flowRules
 
 #apollo
 app:
